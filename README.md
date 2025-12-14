@@ -44,33 +44,30 @@ Or install individually:
 pip install flask flask-cors openai python-dotenv werkzeug requests
 ```
 
-### Step 2: Configure Environment Variables
+### Step 2: Environment Setup
 
-Create a `.env` file in the project root directory with your API keys:
+1. **Copy the environment template:**
+   ```bash
+   cp .env.example .env
+   ```
+   On Windows:
+   ```bash
+   copy .env.example .env
+   ```
 
-```env
-REPLICATE_API_TOKEN=your_replicate_api_token_here
-OPENAI_API_KEY=your_openai_api_key_here
-```
+2. **Add your API keys to `.env`:**
+   - Open the `.env` file in a text editor
+   - Replace `your_replicate_api_token_here` with your actual Replicate API token
+   - Replace `your_openai_api_key_here` with your actual OpenAI API key
 
-**Getting API Keys:**
+   **Getting API Keys:**
+   - **Replicate API Token**: Visit https://replicate.com/account/api-tokens
+   - **OpenAI API Key**: Visit https://platform.openai.com/api-keys
 
-1. **Replicate API Token**:
-   - Visit https://replicate.com/account/api-tokens
-   - Sign up or log in
-   - Create a new API token
-   - Copy the token to your `.env` file
-
-2. **OpenAI API Key**:
-   - Visit https://platform.openai.com/api-keys
-   - Sign up or log in
-   - Create a new API key
-   - Copy the key to your `.env` file
-
-**Important Security Notes:**
-- Never commit the `.env` file to version control (it's already in `.gitignore`)
-- Do not include quotes around the values in `.env`
-- Keep your API keys secure and private
+   **Important Security Notes:**
+   - Never commit the `.env` file to version control (it's already in `.gitignore`)
+   - Do not include quotes around the values in `.env`
+   - Keep your API keys secure and private
 
 ### Step 3: Run the Application
 
@@ -86,7 +83,7 @@ Or on Windows:
 py app.py
 ```
 
-The application will start on `http://localhost:5000` (or `http://0.0.0.0:5000`).
+The application will start on `http://localhost:5000`.
 
 ### Step 4: Access the Application
 

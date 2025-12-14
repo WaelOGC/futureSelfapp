@@ -45,6 +45,13 @@ def index():
 def generate():
     """Handle the AI generation request"""
     try:
+        # Validate API keys before processing
+        if not REPLICATE_API_TOKEN:
+            return jsonify({'error': 'Server configuration error: API keys are missing. Please check your .env file.'}), 500
+        
+        if not openai_key:
+            return jsonify({'error': 'Server configuration error: API keys are missing. Please check your .env file.'}), 500
+        
         # Get the uploaded image
         if 'image' not in request.files:
             return jsonify({'error': 'No image file provided'}), 400
@@ -152,7 +159,7 @@ def generate():
             
         except Exception as e:
             # Clean up uploaded file
-            if os.path.exists(filepath):
+            if filepath and os.path.exists(filepath):
                 os.remove(filepath)
             return jsonify({'error': f'Error processing image: {str(e)}'}), 500
         
@@ -179,11 +186,13 @@ def generate():
             
         except Exception as e:
             # Clean up uploaded file
-            os.remove(filepath)
+            if filepath and os.path.exists(filepath):
+                os.remove(filepath)
             return jsonify({'error': f'Error generating letter: {str(e)}'}), 500
         
         # Clean up uploaded file
-        os.remove(filepath)
+        if filepath and os.path.exists(filepath):
+            os.remove(filepath)
         
         # Return the results
         return jsonify({
