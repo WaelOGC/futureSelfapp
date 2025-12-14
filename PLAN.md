@@ -40,27 +40,142 @@ This document outlines the development plan, key decisions, and future enhanceme
 - ✅ Error handling and user feedback
 - ✅ Loading states during API processing
 
-## Phase 2: Next Steps (In Progress 🚧)
+## Phase 2: Service Dashboard UI (Planned 📋)
 
-### Image Processing Optimization
-- [ ] Implement image compression before upload to reduce processing time
-- [ ] Add image validation (dimensions, aspect ratio, file type)
-- [ ] Optimize Replicate API polling intervals
-- [ ] Add progress indicators for multi-stage processing
-- [ ] Implement retry logic for failed API calls
+### Objective
+Design and implement a unified "Service Dashboard" interface that allows users to select between the 5 AI tools in the Multi-Service AI Suite.
 
-### Download Functionality
-- [ ] Add "Download" button for aged photo
-- [ ] Implement client-side image download via blob URLs
-- [ ] Option to download wisdom letter as text file
-- [ ] Shareable image format with watermark/branding option
+### UI Components
+- [ ] **Service Selection Grid**: Card-based layout displaying all 5 services
+  - Service 1: The Time Capsule (Active)
+  - Service 2: The Cinematic Switch (Planned)
+  - Service 3: Global Voice (Planned)
+  - Service 4: Instant Influencer (Planned)
+  - Service 5: Viral Hook Gen (Planned)
+- [ ] **Service Cards**: Each card should display:
+  - Service name and icon/emoji
+  - Brief description (1-2 sentences)
+  - Status badge (Active/Coming Soon)
+  - "Try Now" or "Coming Soon" button
+- [ ] **Navigation System**: 
+  - Home/dashboard view with all services
+  - Individual service pages with dedicated UI
+  - Back navigation to service selection
+- [ ] **Responsive Design**: 
+  - Mobile-friendly grid (1 column on mobile, 2-3 columns on desktop)
+  - Consistent with existing dark theme
+  - Smooth transitions between service views
 
-### CSS Animations Refinement
-- [ ] Enhanced loading spinner with progress percentage
-- [ ] Smooth transitions between upload and results
-- [ ] Parallax effects for depth
-- [ ] Micro-interactions on buttons and cards
-- [ ] Responsive animation adjustments for mobile
+### HTML Structure
+- [ ] Update `templates/index.html` to include:
+  - Service dashboard as landing page
+  - Service-specific forms/inputs for each tool
+  - Unified loading states and error handling
+  - Results display area adaptable to different output types
+
+### Frontend Enhancements
+- [ ] **Service-Specific Forms**:
+  - Time Capsule: Image upload + dream text (existing)
+  - Cinematic Switch: Image/video upload + scene/style description
+  - Global Voice: Video upload + target language selector
+  - Instant Influencer: Image upload + style selector (corporate/creative/casual)
+  - Viral Hook Gen: Video description + platform selector (TikTok/Reels/Shorts)
+- [ ] **Dynamic UI Loading**: Load service-specific form based on selection
+- [ ] **Unified Results Display**: Adapt to show images, videos, or text based on service
+
+### CSS/Design
+- [ ] Maintain existing dark gradient theme
+- [ ] Add service-specific color accents for visual distinction
+- [ ] Card hover effects and animations
+- [ ] Loading states for each service type
+- [ ] Mobile-responsive service grid
+
+## Phase 3: Backend Routes & API Integration (Planned 📋)
+
+### Objective
+Create individual backend routes for each of the 4 new services and integrate their respective AI APIs.
+
+### Service 2: The Cinematic Switch
+- [ ] **Route**: `/generate/cinematic` (POST)
+- [ ] **Input Handling**:
+  - Accept image or video file upload
+  - Accept scene/style description text
+  - Validate file type and size
+- [ ] **API Integration**: 
+  - Research and integrate Runway AI API or Leonardo AI API
+  - Implement video/image transformation logic
+  - Handle API polling/status checking
+- [ ] **Output**: Return transformed video/image URL(s)
+- [ ] **Error Handling**: Timeout handling, API error responses
+
+### Service 3: Global Voice
+- [ ] **Route**: `/generate/voice` (POST)
+- [ ] **Input Handling**:
+  - Accept video file upload
+  - Accept target language selection
+  - Optional: custom text script input
+- [ ] **API Integration**:
+  - Integrate HeyGen API or ElevenLabs API for voice cloning/translation
+  - Integrate D-ID API or HeyGen for lip-sync video generation
+  - Handle multi-step processing (voice translation → lip-sync)
+- [ ] **Output**: Return translated video URL with lip-sync
+- [ ] **Error Handling**: Handle longer processing times (90-180s), API failures
+
+### Service 4: Instant Influencer
+- [ ] **Route**: `/generate/influencer` (POST)
+- [ ] **Input Handling**:
+  - Accept image file upload
+  - Accept style preference (corporate, creative, casual, formal)
+  - Validate image quality and dimensions
+- [ ] **API Integration**:
+  - Extend existing Replicate API integration
+  - Use Flux-dev model with professional headshot prompts
+  - Generate multiple variations (3-5 headshots)
+- [ ] **Output**: Return array of professional headshot image URLs
+- [ ] **Error Handling**: Reuse existing Replicate error handling patterns
+
+### Service 5: Viral Hook Gen
+- [ ] **Route**: `/generate/hook` (POST)
+- [ ] **Input Handling**:
+  - Accept video description/topic text
+  - Accept target platform selection (TikTok, Instagram Reels, YouTube Shorts)
+  - Optional: tone/style preferences
+- [ ] **API Integration**:
+  - Extend existing OpenAI API integration
+  - Use GPT-4o model (upgrade from GPT-4o-mini)
+  - Create platform-specific prompts for each social media platform
+  - Generate multiple caption variations (5-10 options)
+- [ ] **Output**: Return JSON array of caption/hook variations + hashtag suggestions
+- [ ] **Error Handling**: Fast response time, handle API rate limits
+
+### Backend Architecture Updates
+- [ ] **Route Organization**: 
+  - Keep existing `/generate` route for Time Capsule
+  - Add new routes: `/generate/cinematic`, `/generate/voice`, `/generate/influencer`, `/generate/hook`
+- [ ] **API Key Management**:
+  - Add new environment variables for new APIs (Runway, Leonardo, HeyGen, ElevenLabs, D-ID)
+  - Update `.env.example` with new API key placeholders
+- [ ] **Error Handling**:
+  - Unified error response format across all routes
+  - Service-specific error messages
+  - Retry logic for external API calls
+- [ ] **File Handling**:
+  - Support video file uploads (in addition to images)
+  - Increase file size limits for video files (up to 100MB)
+  - Video format validation and conversion if needed
+
+### API Integration Priority
+1. **Priority 1**: Instant Influencer (uses existing Replicate/Flux-dev, fastest to implement)
+2. **Priority 2**: Viral Hook Gen (uses existing OpenAI, just model upgrade)
+3. **Priority 3**: The Cinematic Switch (new API, medium complexity)
+4. **Priority 4**: Global Voice (most complex, multiple APIs, longest processing time)
+
+### Testing Requirements
+- [ ] Unit tests for each new route
+- [ ] API integration tests (mock API responses)
+- [ ] File upload validation tests
+- [ ] Error handling tests
+- [ ] End-to-end tests for each service workflow
 
 ## Key Decisions
 
@@ -186,5 +301,32 @@ This document outlines the development plan, key decisions, and future enhanceme
 
 ---
 
-**Last Updated**: Current as of project initialization
-**Status**: Phase 1 Complete, Phase 2 In Planning
+## Phase 2 (Legacy): Optimization & Enhancements (Deferred)
+
+*Note: Original Phase 2 tasks have been deferred in favor of Multi-Service expansion. These can be addressed after Phase 3 completion.*
+
+### Image Processing Optimization
+- [ ] Implement image compression before upload to reduce processing time
+- [ ] Add image validation (dimensions, aspect ratio, file type)
+- [ ] Optimize Replicate API polling intervals
+- [ ] Add progress indicators for multi-stage processing
+- [ ] Implement retry logic for failed API calls
+
+### Download Functionality
+- [ ] Add "Download" button for aged photo
+- [ ] Implement client-side image download via blob URLs
+- [ ] Option to download wisdom letter as text file
+- [ ] Shareable image format with watermark/branding option
+
+### CSS Animations Refinement
+- [ ] Enhanced loading spinner with progress percentage
+- [ ] Smooth transitions between upload and results
+- [ ] Parallax effects for depth
+- [ ] Micro-interactions on buttons and cards
+- [ ] Responsive animation adjustments for mobile
+
+---
+
+**Last Updated**: Current as of Multi-Service expansion planning  
+**Status**: Phase 1 Complete ✅ | Phase 2 (Service Dashboard) Planned 📋 | Phase 3 (Backend Routes) Planned 📋  
+**Reference**: See `SERVICES.md` for detailed service specifications
