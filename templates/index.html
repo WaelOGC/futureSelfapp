@@ -3,423 +3,866 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Future Self - Journey to 2050</title>
+    <title>Future Self - Build your future, one day at a time</title>
     <style>
+        :root {
+            /* Light Mode Colors */
+            --bg-primary: #FFFFFF;
+            --bg-surface: #F8F9FA;
+            --text-primary: #1A1A1A;
+            --text-secondary: rgba(107, 114, 128, 0.6);
+            --accent-primary: #3B82F6;
+            --accent-secondary: #8B5CF6;
+            --border: rgba(229, 231, 235, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode Colors */
+            --bg-primary: #0A0A0A;
+            --bg-surface: #1A1A1A;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(156, 163, 175, 0.7);
+            --accent-primary: #60A5FA;
+            --accent-secondary: #A78BFA;
+            --border: rgba(55, 65, 81, 0.2);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #e0e0e0;
-            min-height: 100vh;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 300ms ease, color 300ms ease;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 24px;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 30px 0;
+        /* Header */
+        .header {
+            height: 64px;
+            margin-bottom: 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
         }
 
-        h1 {
-            font-size: 3em;
-            background: linear-gradient(45deg, #00d4ff, #5b9bd5);
+        .header-logo {
+            font-size: 20px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 10px;
-            text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
         }
 
-        .subtitle {
-            font-size: 1.2em;
-            color: #b0b0b0;
-            font-weight: 300;
-        }
-
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .card h2 {
-            color: #00d4ff;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-        }
-
-        .upload-area {
-            border: 2px dashed #5b9bd5;
-            border-radius: 10px;
-            padding: 40px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(91, 155, 213, 0.1);
-        }
-
-        .upload-area:hover {
-            border-color: #00d4ff;
-            background: rgba(0, 212, 255, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .upload-area.dragover {
-            border-color: #00d4ff;
-            background: rgba(0, 212, 255, 0.2);
-        }
-
-        #imageInput {
-            display: none;
-        }
-
-        .upload-icon {
-            font-size: 3em;
-            margin-bottom: 10px;
-            color: #5b9bd5;
-        }
-
-        .preview-image {
-            max-width: 100%;
-            max-height: 300px;
-            border-radius: 10px;
-            margin-top: 20px;
-            display: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        textarea {
-            width: 100%;
-            min-height: 150px;
-            padding: 15px;
-            border: 2px solid #5b9bd5;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.3);
-            color: #e0e0e0;
-            font-size: 1em;
-            font-family: inherit;
-            resize: vertical;
-            transition: border-color 0.3s ease;
-        }
-
-        textarea:focus {
-            outline: none;
-            border-color: #00d4ff;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-        }
-
-        .button-container {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .generate-btn {
-            background: linear-gradient(45deg, #00d4ff, #5b9bd5);
+        .header-cta {
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             color: white;
             border: none;
-            padding: 18px 50px;
-            font-size: 1.3em;
-            font-weight: bold;
-            border-radius: 50px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            transition: transform 200ms ease, opacity 200ms ease;
         }
 
-        .generate-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.6);
-        }
-
-        .generate-btn:active {
+        .header-cta:hover {
+            opacity: 0.9;
             transform: translateY(-1px);
         }
 
-        .generate-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
+        .header-cta:active {
+            transform: translateY(0);
         }
 
-        .results {
-            display: none;
-            margin-top: 40px;
-        }
-
-        .results.show {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .result-image {
-            width: 100%;
-            max-width: 500px;
-            border-radius: 15px;
-            margin: 20px auto;
-            display: block;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .wisdom-letter {
-            background: rgba(0, 212, 255, 0.1);
-            border-left: 4px solid #00d4ff;
-            padding: 25px;
-            border-radius: 10px;
-            margin-top: 20px;
-            line-height: 1.8;
-            font-size: 1.1em;
-            font-style: italic;
-        }
-
-        .loading {
-            display: none;
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
             text-align: center;
-            margin: 30px 0;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            position: relative;
+            padding: 80px 0 0;
         }
 
-        .loading.show {
-            display: block;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            pointer-events: none;
         }
 
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-top: 4px solid #00d4ff;
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 48px;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 500;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 200ms ease, opacity 200ms ease;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 400;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 200ms ease, border-color 200ms ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-surface);
+            border-color: var(--accent-primary);
+        }
+
+        .hero-visual {
+            width: 400px;
+            height: 300px;
+            position: relative;
+            margin: 0 auto;
+            z-index: 1;
+        }
+
+        .hero-orb {
+            position: absolute;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
+            filter: blur(40px);
+            opacity: 0.6;
+            animation: float 60s infinite ease-in-out;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .hero-orb-1 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--accent-primary), transparent);
+            top: 0;
+            left: 0;
+            animation-delay: 0s;
         }
 
-        .error {
-            background: rgba(255, 0, 0, 0.1);
-            border-left: 4px solid #ff4444;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            color: #ff8888;
-            display: none;
+        .hero-orb-2 {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--accent-secondary), transparent);
+            top: 50px;
+            right: 0;
+            animation-delay: -20s;
         }
 
-        .error.show {
-            display: block;
+        .hero-orb-3 {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, var(--accent-primary), transparent);
+            bottom: 0;
+            left: 50%;
+            animation-delay: -40s;
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-30px, 30px) rotate(240deg); }
+        }
+
+        /* Value Proposition */
+        .value-prop {
+            margin: 80px 0;
+        }
+
+        .hero + .value-prop {
+            margin-top: 10px;
+        }
+
+        .value-prop-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 48px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .value-prop-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .value-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 200ms ease, box-shadow 200ms ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .value-icon-hexagon {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+            opacity: 0.8;
+            filter: blur(2px);
+        }
+
+        .value-icon-grid {
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--accent-primary) 2px, transparent 2px),
+                linear-gradient(90deg, var(--accent-primary) 2px, transparent 2px);
+            background-size: 12px 12px;
+            opacity: 0.6;
+            animation: gridFlow 4s linear infinite;
+        }
+
+        .value-icon-wave {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--accent-secondary) 25%, 
+                var(--accent-primary) 50%, 
+                var(--accent-secondary) 75%, 
+                transparent 100%);
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: waveDrift 8s ease-in-out infinite;
+        }
+
+        @keyframes gridFlow {
+            0% { background-position: 0 0; }
+            100% { background-position: 12px 12px; }
+        }
+
+        @keyframes waveDrift {
+            0%, 100% { transform: translateX(0) scale(1); }
+            50% { transform: translateX(10px) scale(1.1); }
+        }
+
+        .value-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .value-card p {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            margin: 80px 0;
+        }
+
+        .how-it-works-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--text-primary);
+        }
+
+        .steps {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 72px;
+            width: 2px;
+            height: calc(100% + 48px);
+            background: linear-gradient(180deg, var(--accent-primary), transparent);
+            opacity: 0.3;
+            animation: flowUp 3s ease-in-out infinite;
+        }
+
+        @keyframes flowUp {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.3; }
+        }
+
+        .step-number {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            min-width: 48px;
+            margin-right: 24px;
+        }
+
+        .step-content h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .step-content p {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        /* Trust & Philosophy */
+        .trust {
+            margin: 80px 0;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .trust-column h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .trust-list {
+            list-style: none;
+        }
+
+        .trust-list li {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .trust-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        /* Call to Action */
+        .cta-section {
+            margin: 80px 0 0;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            opacity: 0.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section .btn-primary {
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section .btn-link {
+            display: inline-block;
+            font-size: 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 200ms ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section .btn-link:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 32px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-logo {
+            font-size: 16px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 200ms ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .value-prop-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .trust-grid {
+                gap: 32px;
+            }
         }
 
         @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
+            .header {
+                height: 56px;
+                padding: 0 16px;
             }
 
-            h1 {
-                font-size: 2em;
+            .hero {
+                margin-bottom: 10px;
+                padding: 60px 0 0;
             }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .hero-visual {
+                width: 300px;
+                height: 200px;
+            }
+
+            .value-prop,
+            .how-it-works,
+            .trust,
+            .cta-section {
+                margin: 60px 0;
+            }
+
+            .value-prop-title,
+            .how-it-works-title,
+            .cta-section h2 {
+                font-size: 28px;
+            }
+
+            .value-prop-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .cta-section {
+                padding: 60px 0;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-content h3 {
+                font-size: 20px;
+            }
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: transform 200ms ease;
+            z-index: 50;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🚀 Future Self</h1>
-            <p class="subtitle">Journey to 2050 - See Your Future, Read Your Wisdom</p>
-        </header>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-logo">Future Self</div>
+        <button class="header-cta">Get Started</button>
+    </header>
 
-        <div class="main-content">
-            <div class="card">
-                <h2>📸 Upload Your Photo</h2>
-                <div class="upload-area" id="uploadArea">
-                    <div class="upload-icon">📷</div>
-                    <p>Click or drag and drop your image here</p>
-                    <input type="file" id="imageInput" accept="image/*">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Build your future, one day at a time</h1>
+            <p class="hero-subtitle">Future Self translates your long-term goals into daily actions. Stay consistent with calm, intelligent AI guidance.</p>
+            <div class="hero-cta-group">
+                <button class="btn-primary">Start Your Journey</button>
+                <button class="btn-secondary">See How It Works</button>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-grid"></div>
+                <div class="hero-orb hero-orb-1"></div>
+                <div class="hero-orb hero-orb-2"></div>
+                <div class="hero-orb hero-orb-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="value-prop">
+        <div class="container">
+            <h2 class="value-prop-title">Clarity. Structure. Consistency.</h2>
+            <div class="value-prop-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <div class="value-icon-hexagon"></div>
+                    </div>
+                    <h3>Define Your Vision</h3>
+                    <p>Set clear, meaningful long-term goals. Break through ambiguity with structured thinking.</p>
                 </div>
-                <img id="previewImage" class="preview-image" alt="Preview">
-            </div>
-
-            <div class="card">
-                <h2>💭 Share Your Dream</h2>
-                <textarea id="dreamInput" placeholder="What is your biggest dream? What do you hope to achieve? Write it here and your future self will respond with wisdom..."></textarea>
-            </div>
-        </div>
-
-        <div class="button-container">
-            <button class="generate-btn" id="generateBtn">Go to 2050</button>
-        </div>
-
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>Traveling through time... This may take a moment.</p>
-        </div>
-
-        <div class="error" id="error"></div>
-
-        <div class="results" id="results">
-            <div class="card">
-                <h2>✨ Your Future Self (2050)</h2>
-                <img id="agedImage" class="result-image" alt="Aged photo">
-            </div>
-            <div class="card">
-                <h2>📜 Wisdom Letter from Your Future Self</h2>
-                <div class="wisdom-letter" id="wisdomLetter"></div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <div class="value-icon-grid"></div>
+                    </div>
+                    <h3>Daily Actions, Not Dreams</h3>
+                    <p>Every goal becomes a concrete plan. AI translates your vision into achievable daily steps.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <div class="value-icon-wave"></div>
+                    </div>
+                    <h3>Calm Guidance, Not Pressure</h3>
+                    <p>Stay on track with intelligent reminders. No motivational noise—just clear, supportive structure.</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="how-it-works-title">Simple steps to lasting change</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Set Your Goal</h3>
+                        <p>Define what you want to achieve. Be specific, be honest.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>AI Creates Your Plan</h3>
+                        <p>We break your goal into daily actions. No overwhelm, just clarity.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Take Daily Steps</h3>
+                        <p>Follow your personalized plan. Small actions, consistent progress.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Stay Consistent</h3>
+                        <p>AI guides you calmly. Reminders, adjustments, support—when you need it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Philosophy -->
+    <section class="trust">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-column">
+                    <h2>Built for Clarity, Not Hype</h2>
+                    <ul class="trust-list">
+                        <li>No motivational noise. Just structure and execution.</li>
+                        <li>AI that understands your pace, not your pressure.</li>
+                        <li>Privacy-first. Your goals stay yours.</li>
+                        <li>Calm guidance, not constant notifications.</li>
+                    </ul>
+                </div>
+                <div class="trust-column">
+                    <h2>Designed for Real Progress</h2>
+                    <ul class="trust-list">
+                        <li>Evidence-based approach to goal achievement.</li>
+                        <li>Respects your time and attention.</li>
+                        <li>Transparent AI—you control your data.</li>
+                        <li>Built for the long term, not quick wins.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to build your future?</h2>
+            <p>Start your journey today. No credit card required.</p>
+            <button class="btn-primary">Get Started</button>
+            <div>
+                <a href="#" class="btn-link">Learn more</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Future Self</div>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-copyright">© 2024</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌓</button>
 
     <script>
-        const uploadArea = document.getElementById('uploadArea');
-        const imageInput = document.getElementById('imageInput');
-        const previewImage = document.getElementById('previewImage');
-        const dreamInput = document.getElementById('dreamInput');
-        const generateBtn = document.getElementById('generateBtn');
-        const loading = document.getElementById('loading');
-        const error = document.getElementById('error');
-        const results = document.getElementById('results');
-        const agedImage = document.getElementById('agedImage');
-        const wisdomLetter = document.getElementById('wisdomLetter');
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
 
-        // Upload area click
-        uploadArea.addEventListener('click', () => {
-            imageInput.click();
-        });
+        // Check for saved theme preference or default to system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        // Drag and drop
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.classList.add('dragover');
-        });
-
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.classList.remove('dragover');
-        });
-
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                imageInput.files = files;
-                handleImageSelect(files[0]);
-            }
-        });
-
-        // File input change
-        imageInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                handleImageSelect(e.target.files[0]);
-            }
-        });
-
-        function handleImageSelect(file) {
-            if (!file.type.startsWith('image/')) {
-                showError('Please select a valid image file.');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                previewImage.src = e.target.result;
-                previewImage.style.display = 'block';
-            };
-            reader.readAsDataURL(file);
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (systemPrefersDark) {
+            html.setAttribute('data-theme', 'dark');
+        } else {
+            html.setAttribute('data-theme', 'light');
         }
 
-        // Generate button click
-        generateBtn.addEventListener('click', async () => {
-            if (!imageInput.files || imageInput.files.length === 0) {
-                showError('Please upload an image first.');
-                return;
-            }
-
-            if (!dreamInput.value.trim()) {
-                showError('Please enter your dream.');
-                return;
-            }
-
-            // Hide previous results and errors
-            results.classList.remove('show');
-            error.classList.remove('show');
-
-            // Show loading
-            loading.classList.add('show');
-            generateBtn.disabled = true;
-
-            // Prepare form data
-            const formData = new FormData();
-            formData.append('image', imageInput.files[0]);
-            formData.append('dream', dreamInput.value.trim());
-
-            try {
-                const response = await fetch('/generate', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const data = await response.json();
-
-                if (!response.ok) {
-                    throw new Error(data.error || 'Something went wrong');
-                }
-
-                // Display results
-                agedImage.src = data.aged_image_url;
-                wisdomLetter.textContent = data.wisdom_letter;
-                results.classList.add('show');
-
-                // Scroll to results
-                results.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-            } catch (err) {
-                showError(err.message || 'An error occurred. Please try again.');
-            } finally {
-                loading.classList.remove('show');
-                generateBtn.disabled = false;
-            }
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
         });
 
-        function showError(message) {
-            error.textContent = message;
-            error.classList.add('show');
-            setTimeout(() => {
-                error.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 100);
-        }
+        // Smooth scroll for "See How It Works" button
+        document.querySelector('.btn-secondary').addEventListener('click', () => {
+            document.querySelector('.how-it-works').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // CTA buttons scroll to top (placeholder for future functionality)
+        document.querySelectorAll('.btn-primary, .header-cta').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Placeholder for future signup/login flow
+                console.log('Get Started clicked');
+            });
+        });
     </script>
 </body>
 </html>
-
