@@ -41,32 +41,154 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
             background: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.65;
             transition: background-color 300ms ease, color 300ms ease;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* Global Container System */
+        /* ============================================
+           TYPOGRAPHY SYSTEM
+           ============================================ */
+        
+        /* Base text - readable line length */
+        p, li, .text-content {
+            max-width: 70ch;
+            line-height: 1.65;
+        }
+
+        /* Heading hierarchy */
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        /* Typography helper classes */
+        .page-title {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 24px;
+        }
+
+        .text-muted {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Responsive typography */
+        @media (max-width: 768px) {
+            h1, .page-title {
+                font-size: 36px;
+            }
+
+            h2, .section-title {
+                font-size: 28px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            body {
+                font-size: 15px;
+            }
+        }
+
+        /* ============================================
+           1. GLOBAL CONTAINER & WIDTH SYSTEM
+           ============================================ */
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
+            width: 100%;
         }
 
-        /* Section Spacing System */
-        .section {
-            padding: 40px 0;
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
         }
 
-        .section + .section {
-            margin-top: 0;
+        /* ============================================
+           2. SECTION SPACING SYSTEM
+           ============================================ */
+        .section-tight {
+            padding: 10px 0;
         }
 
-        /* Header */
+        .section-normal {
+            padding: 15px 0;
+        }
+
+        /* Default section spacing - tight and consistent */
+        section {
+            padding: 12px 0;
+        }
+
+        /* ============================================
+           3. HEADER LAYOUT (3-ZONE SYSTEM)
+           ============================================ */
         .header {
             height: 64px;
             margin-bottom: 24px;
@@ -77,12 +199,14 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
-            display: flex;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
             align-items: center;
-            justify-content: space-between;
+            gap: 24px;
             padding: 0 24px;
         }
 
+        /* LEFT ZONE: Logo */
         .header-logo {
             font-size: 20px;
             font-weight: 600;
@@ -91,18 +215,15 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-decoration: none;
+            white-space: nowrap;
         }
 
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
+        /* CENTER ZONE: Navigation (visually centered) */
         .header-nav {
             display: flex;
-            gap: 24px;
+            justify-content: center;
             align-items: center;
+            gap: 32px;
         }
 
         .header-nav a {
@@ -110,10 +231,19 @@
             color: var(--text-secondary);
             text-decoration: none;
             transition: color 200ms ease;
+            white-space: nowrap;
         }
 
         .header-nav a:hover {
             color: var(--text-primary);
+        }
+
+        /* RIGHT ZONE: CTA + Theme Toggle */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: flex-end;
         }
 
         .header-cta {
@@ -128,6 +258,7 @@
             transition: transform 200ms ease, opacity 200ms ease;
             text-decoration: none;
             display: inline-block;
+            white-space: nowrap;
         }
 
         .header-cta:hover {
@@ -162,12 +293,22 @@
             border-color: var(--accent-primary);
         }
 
-        /* Main Content */
+        /* ============================================
+           4. MAIN CONTENT
+           ============================================ */
         main {
             flex: 1;
+            width: 100%;
         }
 
-        /* Footer */
+        /* Ensure direct child content is centered via .container */
+        main > *:not(.container) {
+            max-width: 100%;
+        }
+
+        /* ============================================
+           5. FOOTER (ALIGNED & CONSTRAINED)
+           ============================================ */
         .footer {
             padding: 32px 0;
             border-top: 1px solid var(--border);
@@ -194,6 +335,7 @@
         .footer-links {
             display: flex;
             gap: 24px;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
@@ -212,7 +354,9 @@
             color: var(--text-secondary);
         }
 
-        /* Back to Top Button */
+        /* ============================================
+           6. BACK-TO-TOP BUTTON (GLOBAL)
+           ============================================ */
         .back-to-top {
             position: fixed;
             bottom: 24px;
@@ -251,7 +395,9 @@
             transform: translateY(-2px);
         }
 
-        /* Support Button */
+        /* ============================================
+           7. SUPPORT / HELP BUTTON (GLOBAL)
+           ============================================ */
         .support-button {
             position: fixed;
             bottom: 24px;
@@ -406,15 +552,398 @@
             border-color: var(--accent-primary);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
+        /* ============================================
+           8. ANIMATION SYSTEM (SCROLL REVEAL)
+           ============================================ */
+        
+        /* Base reveal class - hidden state */
+        .reveal {
+            opacity: 0;
+            transition: opacity 600ms ease-out, transform 600ms ease-out;
+        }
+
+        /* Reveal variants - must be combined with .reveal */
+        .reveal.reveal-up {
+            transform: translateY(30px);
+        }
+
+        .reveal.reveal-left {
+            transform: translateX(-30px);
+        }
+
+        .reveal.reveal-right {
+            transform: translateX(30px);
+        }
+
+        .reveal.reveal-fade {
+            transform: none;
+        }
+
+        /* Visible state */
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translate(0, 0) !important;
+        }
+
+        /* Stagger support - children get incremental delay */
+        [data-stagger] > .reveal {
+            transition-delay: 0ms;
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
             }
 
+            .reveal.is-visible {
+                opacity: 1;
+                transform: none;
+            }
+
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ============================================
+           9. GLOBAL MICRO-INTERACTIONS
+           ============================================ */
+        
+        /* ============================================
+           11. BUTTON SYSTEM (Standardized)
+           ============================================ */
+        
+        .btn,
+        button:not(.theme-toggle):not(.support-modal-close):not(.back-to-top):not(.support-button),
+        .btn-primary,
+        .btn-secondary,
+        .btn-ghost,
+        a[class*="btn"],
+        .header-cta,
+        .form-submit {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 300ms ease, box-shadow 300ms ease, opacity 300ms ease, background-color 300ms ease, border-color 300ms ease;
+            position: relative;
+            font-family: inherit;
+        }
+
+        .btn-primary,
+        button.btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+        }
+
+        .btn-secondary,
+        button.btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-secondary);
+            border: none;
+        }
+
+        .btn:hover:not(:disabled),
+        .btn-primary:hover:not(:disabled),
+        .btn-secondary:hover:not(:disabled),
+        .btn-ghost:hover:not(:disabled),
+        button:not(.theme-toggle):not(.support-modal-close):not(.back-to-top):not(.support-button):hover:not(:disabled),
+        a[class*="btn"]:hover,
+        .header-cta:hover,
+        .form-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25);
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: var(--bg-surface);
+            border-color: var(--accent-primary);
+        }
+
+        .btn-ghost:hover:not(:disabled) {
+            color: var(--text-primary);
+        }
+
+        .btn:active:not(:disabled),
+        .btn-primary:active:not(:disabled),
+        .btn-secondary:active:not(:disabled),
+        .btn-ghost:active:not(:disabled),
+        button:not(.theme-toggle):not(.support-modal-close):not(.back-to-top):not(.support-button):active:not(:disabled),
+        a[class*="btn"]:active,
+        .header-cta:active,
+        .form-submit:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+
+        .btn:disabled,
+        .btn-primary:disabled,
+        .btn-secondary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Focus-visible for keyboard users */
+        .btn:focus-visible,
+        .btn-primary:focus-visible,
+        .btn-secondary:focus-visible,
+        .btn-ghost:focus-visible,
+        button:focus-visible,
+        a[class*="btn"]:focus-visible,
+        .header-cta:focus-visible,
+        .form-submit:focus-visible {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+
+        /* ============================================
+           12. FORM SYSTEM (Standardized)
+           ============================================ */
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .form-group label .optional,
+        .form-group label .required {
+            font-weight: 400;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .input,
+        .select,
+        .textarea,
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="date"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 16px;
+            font-family: inherit;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            transition: border-color 300ms ease, box-shadow 300ms ease, background-color 300ms ease;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .input:focus,
+        .select:focus,
+        .textarea:focus,
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="number"]:focus,
+        input[type="tel"]:focus,
+        input[type="url"]:focus,
+        input[type="date"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            background: var(--bg-primary);
+        }
+
+        .textarea,
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.65;
+        }
+
+        .select,
+        select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2360A5FA' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        input[type="file"] {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        input[type="file"]::file-selector-button {
+            padding: 8px 16px;
+            margin-right: 12px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: opacity 300ms ease;
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            opacity: 0.9;
+        }
+
+        .form-error {
+            display: none;
+            margin-top: 6px;
+            font-size: 14px;
+            color: #ef4444;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 24px;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        /* ============================================
+           10. CARD SYSTEM (Reusable)
+           ============================================ */
+        
+        .card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-primary);
+        }
+
+        .card-header {
+            margin-bottom: 16px;
+        }
+
+        .card-header h3,
+        .card-header h4 {
+            margin-bottom: 8px;
+        }
+
+        .card-body {
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .card-body p {
+            margin-bottom: 12px;
+        }
+
+        .card-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Card grid - responsive */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+
+        /* Legacy card compatibility - apply card styles */
+        .service-card,
+        .value-card,
+        .why-card,
+        .step-card,
+        .option-card,
+        .outcome-card,
+        .safety-block,
+        .faq-item,
+        .principle-item,
+        .journey-step,
+        .method-step {
+            transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+        }
+
+        .service-card:hover,
+        .value-card:hover,
+        .why-card:hover,
+        .step-card:hover,
+        .option-card:hover,
+        .outcome-card:hover,
+        .safety-block:hover,
+        .faq-item:hover,
+        .principle-item:hover,
+        .journey-step:hover,
+        .method-step:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 1024px) {
+            .header-nav {
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
             .header {
                 height: 56px;
                 padding: 0 16px;
+                grid-template-columns: auto 1fr auto;
+                gap: 16px;
             }
 
             .header-nav {
@@ -422,7 +951,12 @@
             }
 
             .header-right {
-                gap: 12px;
+                gap: 8px;
+            }
+
+            .header-cta {
+                font-size: 13px;
+                padding: 6px 16px;
             }
 
             .theme-toggle {
@@ -459,15 +993,21 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header: 3-Zone Layout -->
     <header class="header">
+        <!-- LEFT: Logo -->
         <a href="/" class="header-logo">Future Self</a>
+        
+        <!-- CENTER: Navigation (visually centered) -->
+        <nav class="header-nav">
+            <a href="/about">About</a>
+            <a href="/services">Services</a>
+            <a href="/how-it-works">How It Works</a>
+            <a href="/contact">Contact</a>
+        </nav>
+        
+        <!-- RIGHT: CTA + Theme Toggle -->
         <div class="header-right">
-            <nav class="header-nav">
-                <a href="/about">About</a>
-                <a href="/how-it-works">How It Works</a>
-                <a href="/contact">Contact</a>
-            </nav>
             <a href="/get-started" class="header-cta">Get Started</a>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌓</button>
         </div>
@@ -478,7 +1018,7 @@
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Footer -->
+    <!-- Footer: Aligned & Constrained -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -495,10 +1035,10 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
+    <!-- Back to Top Button (Global) -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
-    <!-- Support Button -->
+    <!-- Support Button (Global) -->
     <button class="support-button" id="supportButton" aria-label="Support">💬</button>
 
     <!-- Support Modal -->
@@ -513,27 +1053,33 @@
             </div>
             <div class="support-modal-actions">
                 <a href="/contact" class="support-modal-btn support-modal-btn-primary">Contact Us</a>
-                <a href="/how-it-works" class="support-modal-btn support-modal-btn-secondary">Read FAQ</a>
+                <a href="/how-it-works" class="support-modal-btn support-modal-btn-secondary">How It Works</a>
             </div>
         </div>
     </div>
 
     <script>
-        // Theme Toggle
+        // ============================================
+        // THEME TOGGLE (No Flash on Load)
+        // ============================================
+        (function() {
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // Apply theme immediately (before body renders) to prevent flash
+            if (savedTheme) {
+                html.setAttribute('data-theme', savedTheme);
+            } else if (systemPrefersDark) {
+                html.setAttribute('data-theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+            }
+        })();
+
+        // Theme toggle handler
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
-
-        // Check for saved theme preference or default to system preference
-        const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (savedTheme) {
-            html.setAttribute('data-theme', savedTheme);
-        } else if (systemPrefersDark) {
-            html.setAttribute('data-theme', 'dark');
-        } else {
-            html.setAttribute('data-theme', 'light');
-        }
 
         themeToggle.addEventListener('click', () => {
             const currentTheme = html.getAttribute('data-theme');
@@ -542,7 +1088,9 @@
             localStorage.setItem('theme', newTheme);
         });
 
-        // Back to Top Button
+        // ============================================
+        // BACK-TO-TOP BUTTON (Global)
+        // ============================================
         const backToTopButton = document.getElementById('backToTop');
 
         function toggleBackToTop() {
@@ -563,7 +1111,9 @@
             });
         });
 
-        // Support Modal
+        // ============================================
+        // SUPPORT MODAL (Global)
+        // ============================================
         const supportButton = document.getElementById('supportButton');
         const supportModal = document.getElementById('supportModal');
         const supportModalClose = document.getElementById('supportModalClose');
@@ -594,6 +1144,88 @@
                 closeSupportModal();
             }
         });
+
+        // ============================================
+        // SCROLL REVEAL ANIMATION SYSTEM (Global)
+        // ============================================
+        (function() {
+            // Check for reduced motion preference
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            // Safety fallback: If IntersectionObserver is not supported, show all immediately
+            const hasIntersectionObserver = typeof IntersectionObserver !== 'undefined';
+            
+            // Initialize on DOM ready
+            function initRevealAnimations() {
+                const revealElements = document.querySelectorAll('.reveal');
+                const totalReveals = revealElements.length;
+                let activatedCount = 0;
+
+                // If reduced motion or no IntersectionObserver, show all immediately
+                if (prefersReducedMotion || !hasIntersectionObserver) {
+                    revealElements.forEach(el => {
+                        el.classList.add('is-visible');
+                        activatedCount++;
+                    });
+                    
+                    // Development logging
+                    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                        console.log(`[Reveal Animations] ${totalReveals} elements found, ${activatedCount} activated (${prefersReducedMotion ? 'reduced motion' : 'no IntersectionObserver'})`);
+                    }
+                    return;
+                }
+
+                // Intersection Observer for scroll animations
+                const observerOptions = {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            activatedCount++;
+                            // Unobserve after animation to improve performance
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe all reveal elements
+                revealElements.forEach(el => {
+                    revealObserver.observe(el);
+                });
+
+                // Handle stagger delays for children
+                document.querySelectorAll('[data-stagger]').forEach(container => {
+                    const staggerDelay = parseInt(container.getAttribute('data-stagger')) || 100;
+                    const children = container.querySelectorAll(':scope > .reveal');
+                    
+                    children.forEach((child, index) => {
+                        child.style.transitionDelay = `${index * staggerDelay}ms`;
+                    });
+                });
+
+                // Development logging
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    console.log(`[Reveal Animations] ${totalReveals} elements found, will activate on scroll`);
+                    
+                    // Log after a short delay to show initial activation
+                    setTimeout(() => {
+                        const visibleCount = document.querySelectorAll('.reveal.is-visible').length;
+                        console.log(`[Reveal Animations] ${visibleCount}/${totalReveals} elements visible`);
+                    }, 1000);
+                }
+            }
+
+            // Run when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initRevealAnimations);
+            } else {
+                initRevealAnimations();
+            }
+        })();
     </script>
 
     {% block extra_scripts %}{% endblock %}

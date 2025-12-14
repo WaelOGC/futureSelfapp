@@ -12,14 +12,10 @@
         padding: 0;
     }
 
-    .section + .section {
-        margin-top: 15px;
-    }
-
     /* Hero Section */
     .hero {
         position: relative;
-        padding: 60px 0 40px;
+        padding: 40px 0 30px;
         text-align: center;
         overflow: hidden;
     }
@@ -154,7 +150,7 @@
 
     /* Services Section */
     .services {
-        padding: 40px 0;
+        padding: 12px 0;
         position: relative;
     }
 
@@ -319,7 +315,7 @@
 
     /* Value Proposition */
     .value-prop {
-        padding: 40px 0;
+        padding: 12px 0;
     }
 
     .value-prop-title {
@@ -440,7 +436,7 @@
 
     /* How It Works */
     .how-it-works {
-        padding: 40px 0;
+        padding: 12px 0;
     }
 
     .how-it-works-title {
@@ -529,14 +525,13 @@
 
     /* Trust & Philosophy */
     .trust {
-        padding: 40px 0;
+        padding: 12px 0;
     }
 
     .trust-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-        max-width: 900px;
+        gap: 24px;
         margin: 0 auto;
     }
 
@@ -583,11 +578,10 @@
 
     /* Call to Action */
     .cta-section {
-        padding: 60px 0;
+        padding: 40px 0;
         text-align: center;
         position: relative;
         background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-        margin-top: 15px;
     }
 
     .cta-section::before {
@@ -666,7 +660,7 @@
 
     @media (max-width: 768px) {
         .hero {
-            padding: 40px 0 30px;
+            padding: 30px 0 20px;
         }
 
         .hero h1 {
@@ -696,7 +690,7 @@
         }
 
         .cta-section {
-            padding: 40px 0;
+            padding: 30px 0;
         }
 
         .step-content h3 {
@@ -721,10 +715,10 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Build your future, one day at a time</h1>
-                <p class="hero-subtitle">Future Self translates your long-term goals into daily actions. Stay consistent with calm, intelligent AI guidance.</p>
-                <p class="hero-supporting">Five focused AI services. One platform. Built for clarity and execution.</p>
-                <div class="hero-cta-group">
+                <h1 class="page-title reveal reveal-up">Build your future, one day at a time</h1>
+                <p class="section-subtitle reveal reveal-up">Future Self translates your long-term goals into daily actions. Stay consistent with calm, intelligent AI guidance.</p>
+                <p class="text-muted reveal reveal-up" style="text-align: center; max-width: 700px; margin: 0 auto 24px;">Five focused AI services. One platform. Built for clarity and execution.</p>
+                <div class="hero-cta-group reveal reveal-up">
                     <button class="btn-primary" onclick="window.location.href='/get-started'">Start Your Journey</button>
                     <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">Explore Services</button>
                 </div>
@@ -736,39 +730,49 @@
     <section id="services" class="services section">
         <div class="container">
             <div class="services-header">
-                <h2 class="services-title">Our AI Services</h2>
-                <p class="services-subtitle">Five powerful tools designed to help you achieve clarity, build habits, and make better decisions.</p>
+                <h2 class="section-title reveal reveal-up">Our AI Services</h2>
+                <p class="section-subtitle reveal reveal-up">Five powerful tools designed to help you achieve clarity, build habits, and make better decisions.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card" data-service="1">
+            <div class="card-grid" data-stagger="120">
+                <div class="card service-card reveal reveal-up" data-service="1">
                     <div class="service-icon"></div>
                     <h3>Future Self</h3>
                     <p>Visualize your future self through AI-powered photo aging and receive personalized wisdom from your future perspective.</p>
-                    <span class="service-link">Learn more</span>
+                    <div style="margin-top: 16px;">
+                        <a href="/get-started" class="btn btn-primary">Start</a>
+                    </div>
                 </div>
-                <div class="service-card" data-service="2">
+                <div class="card service-card reveal reveal-up" data-service="2">
                     <div class="service-icon"></div>
                     <h3>Goal Blueprint</h3>
                     <p>Transform your aspirations into structured, actionable plans with AI-powered goal breakdown and milestone tracking.</p>
-                    <span class="service-link">Learn more</span>
+                    <div style="margin-top: 16px;">
+                        <a href="/services" class="btn btn-primary">Learn more</a>
+                    </div>
                 </div>
-                <div class="service-card" data-service="3">
+                <div class="card service-card reveal reveal-up" data-service="3">
                     <div class="service-icon"></div>
                     <h3>Habit Builder</h3>
                     <p>Build lasting habits with intelligent daily routines, progress tracking, and personalized habit formation strategies.</p>
-                    <span class="service-link">Learn more</span>
+                    <div style="margin-top: 16px;">
+                        <a href="/services" class="btn btn-primary">Learn more</a>
+                    </div>
                 </div>
-                <div class="service-card" data-service="4">
+                <div class="card service-card reveal reveal-up" data-service="4">
                     <div class="service-icon"></div>
                     <h3>Accountability System</h3>
                     <p>Stay on track with AI-powered check-ins, progress monitoring, and gentle reminders that respect your pace.</p>
-                    <span class="service-link">Learn more</span>
+                    <div style="margin-top: 16px;">
+                        <a href="/services" class="btn btn-primary">Learn more</a>
+                    </div>
                 </div>
-                <div class="service-card" data-service="5">
+                <div class="card service-card reveal reveal-up" data-service="5">
                     <div class="service-icon"></div>
                     <h3>Decision Clarity Assistant</h3>
                     <p>Make confident decisions with structured analysis, pros and cons evaluation, and AI-guided clarity frameworks.</p>
-                    <span class="service-link">Learn more</span>
+                    <div style="margin-top: 16px;">
+                        <a href="/services" class="btn btn-primary">Learn more</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -777,23 +781,23 @@
     <!-- Value Proposition -->
     <section class="value-prop section">
         <div class="container">
-            <h2 class="value-prop-title">Clarity. Structure. Consistency.</h2>
-            <div class="value-prop-grid">
-                <div class="value-card">
+            <h2 class="section-title reveal reveal-up">Clarity. Structure. Consistency.</h2>
+            <div class="card-grid" data-stagger="120">
+                <div class="card value-card reveal reveal-up">
                     <div class="value-icon">
                         <div class="value-icon-hexagon"></div>
                     </div>
                     <h3>Define Your Vision</h3>
                     <p>Set clear, meaningful long-term goals. Break through ambiguity with structured thinking.</p>
                 </div>
-                <div class="value-card">
+                <div class="card value-card reveal reveal-up">
                     <div class="value-icon">
                         <div class="value-icon-grid"></div>
                     </div>
                     <h3>Daily Actions, Not Dreams</h3>
                     <p>Every goal becomes a concrete plan. AI translates your vision into achievable daily steps.</p>
                 </div>
-                <div class="value-card">
+                <div class="card value-card reveal reveal-up">
                     <div class="value-icon">
                         <div class="value-icon-wave"></div>
                     </div>
@@ -807,30 +811,30 @@
     <!-- How It Works -->
     <section class="how-it-works section">
         <div class="container">
-            <h2 class="how-it-works-title">Simple steps to lasting change</h2>
-            <div class="steps">
-                <div class="step">
+            <h2 class="section-title reveal reveal-up">Simple steps to lasting change</h2>
+            <div class="steps" data-stagger="150">
+                <div class="step reveal reveal-left">
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Set Your Goal</h3>
                         <p>Define what you want to achieve. Be specific, be honest.</p>
                     </div>
                 </div>
-                <div class="step">
+                <div class="step reveal reveal-left">
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3>AI Creates Your Plan</h3>
                         <p>We break your goal into daily actions. No overwhelm, just clarity.</p>
                     </div>
                 </div>
-                <div class="step">
+                <div class="step reveal reveal-left">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>Take Daily Steps</h3>
                         <p>Follow your personalized plan. Small actions, consistent progress.</p>
                     </div>
                 </div>
-                <div class="step">
+                <div class="step reveal reveal-left">
                     <div class="step-number">4</div>
                     <div class="step-content">
                         <h3>Stay Consistent</h3>
@@ -844,8 +848,8 @@
     <!-- Trust & Philosophy -->
     <section class="trust section">
         <div class="container">
-            <div class="trust-grid">
-                <div class="trust-column">
+            <div class="trust-grid" data-stagger="100">
+                <div class="trust-column reveal reveal-up">
                     <h2>Built for Clarity, Not Hype</h2>
                     <ul class="trust-list">
                         <li>No motivational noise. Just structure and execution.</li>
@@ -854,7 +858,7 @@
                         <li>Calm guidance, not constant notifications.</li>
                     </ul>
                 </div>
-                <div class="trust-column">
+                <div class="trust-column reveal reveal-up">
                     <h2>Designed for Real Progress</h2>
                     <ul class="trust-list">
                         <li>Evidence-based approach to goal achievement.</li>
@@ -870,11 +874,13 @@
     <!-- Call to Action -->
     <section class="cta-section section">
         <div class="container">
-            <h2>Ready to build your future?</h2>
-            <p>Start your journey today. No credit card required.</p>
-            <button class="btn-primary" onclick="window.location.href='/get-started'">Get Started</button>
-            <div>
-                <a href="/how-it-works" class="btn-link">Learn more</a>
+            <div class="card reveal reveal-fade" style="text-align: center; padding: 40px 24px;">
+                <h2 class="section-title" style="margin-bottom: 16px;">Ready to build your future?</h2>
+                <p class="text-muted" style="margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">Start your journey today. No credit card required.</p>
+                <button class="btn btn-primary" onclick="window.location.href='/get-started'">Get Started</button>
+                <div style="margin-top: 16px;">
+                    <a href="/how-it-works" class="btn btn-ghost">Learn more</a>
+                </div>
             </div>
         </div>
     </section>
@@ -882,65 +888,6 @@
 
 {% block extra_scripts %}
 <script>
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-
-    // Observe all animatable elements
-    document.addEventListener('DOMContentLoaded', () => {
-        // Services header
-        const servicesHeader = document.querySelector('.services-header');
-        if (servicesHeader) observer.observe(servicesHeader);
-
-        // Service cards with stagger
-        const serviceCards = document.querySelectorAll('.service-card');
-        serviceCards.forEach((card, index) => {
-            observer.observe(card);
-            // Add stagger delay
-            card.style.animationDelay = `${index * 0.1}s`;
-        });
-
-        // Value prop title
-        const valuePropTitle = document.querySelector('.value-prop-title');
-        if (valuePropTitle) observer.observe(valuePropTitle);
-
-        // Value cards
-        const valueCards = document.querySelectorAll('.value-card');
-        valueCards.forEach((card, index) => {
-            observer.observe(card);
-            card.style.animationDelay = `${index * 0.1}s`;
-        });
-
-        // How it works title
-        const howItWorksTitle = document.querySelector('.how-it-works-title');
-        if (howItWorksTitle) observer.observe(howItWorksTitle);
-
-        // Steps
-        const steps = document.querySelectorAll('.step');
-        steps.forEach((step, index) => {
-            observer.observe(step);
-            step.style.animationDelay = `${index * 0.15}s`;
-        });
-
-        // Trust columns
-        const trustColumns = document.querySelectorAll('.trust-column');
-        trustColumns.forEach(column => observer.observe(column));
-
-        // CTA section
-        const ctaSection = document.querySelector('.cta-section');
-        if (ctaSection) observer.observe(ctaSection);
-    });
-
     // Smooth scroll for secondary button
     document.querySelectorAll('.btn-secondary').forEach(btn => {
         btn.addEventListener('click', (e) => {

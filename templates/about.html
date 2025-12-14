@@ -12,7 +12,7 @@
         justify-content: flex-start;
         text-align: center;
         position: relative;
-        padding: 80px 0 60px;
+        padding: 40px 0 30px;
         margin-bottom: 0;
     }
 
@@ -103,7 +103,7 @@
 
     /* The Why Section */
     .the-why {
-        margin: 80px 0;
+        padding: 12px 0;
     }
 
     .section-title {
@@ -154,8 +154,7 @@
 
     /* The Method Section */
     .the-method {
-        margin: 80px 0;
-        padding: 60px 0;
+        padding: 12px 0;
         background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
     }
 
@@ -227,7 +226,7 @@
 
     /* Principles Section */
     .principles {
-        margin: 80px 0;
+        padding: 12px 0;
     }
 
     .principles-list {
@@ -300,17 +299,17 @@
 
     /* Trust & Boundaries Section */
     .trust-boundaries {
-        margin: 80px 0;
-        padding: 40px;
+        padding: 20px 0;
+    }
+
+    .trust-boundaries-content {
+        padding: 24px;
         background: var(--glass-bg);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border);
         border-radius: 12px;
         text-align: center;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
     }
 
     .trust-boundaries p {
@@ -335,8 +334,7 @@
 
     /* Final CTA Band */
     .final-cta {
-        margin: 80px 0 0;
-        padding: 80px 0;
+        padding: 40px 0;
         text-align: center;
         position: relative;
         background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
@@ -403,7 +401,7 @@
 
     @media (max-width: 768px) {
         .about-hero {
-            padding: 60px 0 40px;
+            padding: 30px 0 20px;
         }
 
         .about-hero h1 {
@@ -418,12 +416,8 @@
             font-size: 28px;
         }
 
-        .the-why,
-        .the-method,
-        .principles,
-        .trust-boundaries,
         .final-cta {
-            margin: 60px 0;
+            padding: 30px 0;
         }
 
         .why-grid {
@@ -443,12 +437,8 @@
             padding: 20px;
         }
 
-        .trust-boundaries {
-            padding: 32px 24px;
-        }
-
-        .final-cta {
-            padding: 60px 0;
+        .trust-boundaries-content {
+            padding: 20px 16px;
         }
 
         .final-cta h2 {
@@ -462,9 +452,9 @@
     <!-- Hero Section -->
     <section class="about-hero">
         <div class="container">
-            <h1>Meet Your Future Self</h1>
-            <p class="about-hero-subtitle">The person you become isn't built in a day. It's built through consistent choices, intentional actions, and the quiet commitment to show up—even when it's hard.</p>
-            <div class="about-hero-cta-group">
+            <h1 class="page-title reveal reveal-up">Meet Your Future Self</h1>
+            <p class="section-subtitle reveal reveal-up">The person you become isn't built in a day. It's built through consistent choices, intentional actions, and the quiet commitment to show up—even when it's hard.</p>
+            <div class="about-hero-cta-group reveal reveal-up">
                 <a href="/get-started" class="about-btn-primary">Start Your Journey</a>
                 <a href="/how-it-works" class="about-btn-secondary">How It Works</a>
             </div>
@@ -474,17 +464,17 @@
     <!-- The Why Section -->
     <section class="the-why">
         <div class="container">
-            <h2 class="section-title">The Why</h2>
-            <div class="why-grid">
-                <div class="why-card">
+            <h2 class="section-title reveal reveal-up">The Why</h2>
+            <div class="card-grid" data-stagger="100">
+                <div class="card why-card reveal reveal-up">
                     <h3>Clarity</h3>
                     <p>Every decision becomes easier when you know who you're becoming. We help you see the path clearly, without the noise of endless options.</p>
                 </div>
-                <div class="why-card">
+                <div class="card why-card reveal reveal-up">
                     <h3>Consistency</h3>
                     <p>Big goals happen through small, daily actions. We turn your vision into a sustainable practice that fits your real life.</p>
                 </div>
-                <div class="why-card">
+                <div class="card why-card reveal reveal-up">
                     <h3>Identity</h3>
                     <p>You don't achieve goals—you become the person who naturally lives them. We help you build the identity that makes success inevitable.</p>
                 </div>
@@ -495,30 +485,30 @@
     <!-- The Method Section -->
     <section class="the-method">
         <div class="container">
-            <h2 class="section-title">The Method</h2>
-            <div class="method-steps">
-                <div class="method-step">
+            <h2 class="section-title reveal reveal-up">The Method</h2>
+            <div class="method-steps" data-stagger="150">
+                <div class="method-step reveal reveal-left">
                     <div class="method-step-number">1</div>
                     <div class="method-step-content">
                         <h3>Upload a photo</h3>
                         <p>Share a moment that represents where you are today. This becomes the starting point of your journey.</p>
                     </div>
                 </div>
-                <div class="method-step">
+                <div class="method-step reveal reveal-left">
                     <div class="method-step-number">2</div>
                     <div class="method-step-content">
                         <h3>Describe your dream life</h3>
                         <p>Tell us about the future you want to build. Be specific, be honest, be bold. This is your vision.</p>
                     </div>
                 </div>
-                <div class="method-step">
+                <div class="method-step reveal reveal-left">
                     <div class="method-step-number">3</div>
                     <div class="method-step-content">
                         <h3>Receive your Future Self message</h3>
                         <p>Get a personalized letter from the person you're becoming—wisdom, perspective, and encouragement from your future self.</p>
                     </div>
                 </div>
-                <div class="method-step">
+                <div class="method-step reveal reveal-left">
                     <div class="method-step-number">4</div>
                     <div class="method-step-content">
                         <h3>Turn it into daily actions</h3>
@@ -532,37 +522,37 @@
     <!-- Principles Section -->
     <section class="principles">
         <div class="container">
-            <h2 class="section-title">Our Principles</h2>
-            <ul class="principles-list">
-                <li class="principle-item">
+            <h2 class="section-title reveal reveal-up">Our Principles</h2>
+            <ul class="principles-list" data-stagger="100">
+                <li class="principle-item reveal reveal-up">
                     <div class="principle-icon">🔒</div>
                     <div class="principle-content">
                         <h4>Privacy-first mindset</h4>
                         <p>Your goals, your data, your journey. We protect what matters most to you.</p>
                     </div>
                 </li>
-                <li class="principle-item">
+                <li class="card principle-item reveal reveal-up">
                     <div class="principle-icon">✨</div>
                     <div class="principle-content">
                         <h4>No shame, only progress</h4>
                         <p>Every day is a new opportunity. We celebrate where you are and support where you're going.</p>
                     </div>
                 </li>
-                <li class="principle-item">
+                <li class="card principle-item reveal reveal-up">
                     <div class="principle-icon">📈</div>
                     <div class="principle-content">
                         <h4>Small steps compound</h4>
                         <p>One percent better each day adds up to extraordinary change. We focus on sustainable progress.</p>
                     </div>
                 </li>
-                <li class="principle-item">
+                <li class="card principle-item reveal reveal-up">
                     <div class="principle-icon">🎯</div>
                     <div class="principle-content">
                         <h4>You stay in control</h4>
                         <p>This is your journey. We provide guidance, but you make the decisions that shape your future.</p>
                     </div>
                 </li>
-                <li class="principle-item">
+                <li class="card principle-item reveal reveal-up">
                     <div class="principle-icon">🌱</div>
                     <div class="principle-content">
                         <h4>Designed for real life</h4>
@@ -576,18 +566,20 @@
     <!-- Trust & Boundaries Section -->
     <section class="trust-boundaries">
         <div class="container">
-            <p>Future Self provides motivational guidance and tools for personal development. This service is not a substitute for professional medical, psychological, or therapeutic advice. If you're experiencing mental health challenges, please seek support from qualified professionals. We're here to support your growth journey, but your wellbeing comes first.</p>
-            <p><a href="/disclaimer">Read our Disclaimer</a></p>
+            <div class="card trust-boundaries-content reveal reveal-up">
+                <p class="text-muted">Future Self provides motivational guidance and tools for personal development. This service is not a substitute for professional medical, psychological, or therapeutic advice. If you're experiencing mental health challenges, please seek support from qualified professionals. We're here to support your growth journey, but your wellbeing comes first.</p>
+                <p><a href="/disclaimer">Read our Disclaimer</a></p>
+            </div>
         </div>
     </section>
 
     <!-- Final CTA Band -->
     <section class="final-cta">
         <div class="container">
-            <h2>Ready to meet your future self?</h2>
-            <p>Start building the life you want, one intentional step at a time.</p>
-            <a href="/get-started" class="about-btn-primary">Get Started</a>
-            <div>
+            <h2 class="section-title reveal reveal-up">Ready to meet your future self?</h2>
+            <p class="text-muted reveal reveal-up" style="text-align: center; max-width: 600px; margin: 0 auto 24px;">Start building the life you want, one intentional step at a time.</p>
+            <a href="/get-started" class="btn btn-primary reveal reveal-up">Get Started</a>
+            <div class="reveal reveal-up">
                 <a href="/contact" class="cta-link">Contact us</a>
             </div>
         </div>

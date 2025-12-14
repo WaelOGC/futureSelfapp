@@ -32,6 +32,10 @@ def about():
 def how_it_works():
     return render_template("how_it_works.html")
 
+@app.route("/services")
+def services():
+    return render_template("services.html")
+
 @app.route("/get-started")
 def get_started():
     return render_template("get_started.html")

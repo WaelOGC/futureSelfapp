@@ -12,7 +12,7 @@
         justify-content: flex-start;
         text-align: center;
         position: relative;
-        padding: 80px 0 60px;
+        padding: 40px 0 30px;
         margin-bottom: 0;
     }
 
@@ -103,7 +103,7 @@
 
     /* Step-by-Step Journey */
     .step-journey {
-        margin: 80px 0;
+        padding: 12px 0;
     }
 
     .section-title {
@@ -239,8 +239,7 @@
 
     /* What You Get Section */
     .what-you-get {
-        margin: 80px 0;
-        padding: 60px 0;
+        padding: 12px 0;
         background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
     }
 
@@ -283,7 +282,7 @@
 
     /* Safety & Expectations */
     .safety-expectations {
-        margin: 80px 0;
+        padding: 12px 0;
     }
 
     .safety-grid {
@@ -342,7 +341,7 @@
 
     /* Mini FAQ */
     .mini-faq {
-        margin: 80px 0;
+        padding: 12px 0;
     }
 
     .faq-list {
@@ -382,8 +381,7 @@
 
     /* Final CTA Band */
     .final-cta {
-        margin: 80px 0 0;
-        padding: 80px 0;
+        padding: 40px 0;
         text-align: center;
         position: relative;
         background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
@@ -444,7 +442,7 @@
 
     @media (max-width: 768px) {
         .how-hero {
-            padding: 60px 0 40px;
+            padding: 30px 0 20px;
         }
 
         .how-hero h1 {
@@ -459,12 +457,8 @@
             font-size: 28px;
         }
 
-        .step-journey,
-        .what-you-get,
-        .safety-expectations,
-        .mini-faq,
         .final-cta {
-            margin: 60px 0;
+            padding: 30px 0;
         }
 
         .journey-step {
@@ -487,9 +481,6 @@
             font-size: 20px;
         }
 
-        .final-cta {
-            padding: 60px 0;
-        }
 
         .final-cta h2 {
             font-size: 28px;
@@ -502,9 +493,9 @@
     <!-- Hero Section -->
     <section class="how-hero">
         <div class="container">
-            <h1>How It Works</h1>
-            <p class="how-hero-subtitle">A simple, powerful process to connect with your future self and turn your vision into daily action. No complexity, just clarity.</p>
-            <div class="how-hero-cta-group">
+            <h1 class="page-title reveal reveal-up">How It Works</h1>
+            <p class="section-subtitle reveal reveal-up">A simple, powerful process to connect with your future self and turn your vision into daily action. No complexity, just clarity.</p>
+            <div class="how-hero-cta-group reveal reveal-up">
                 <a href="/get-started" class="how-btn-primary">Start Now</a>
                 <a href="/disclaimer" class="how-btn-secondary">Read the Disclaimer</a>
             </div>
@@ -514,9 +505,9 @@
     <!-- Step-by-Step Journey -->
     <section class="step-journey">
         <div class="container">
-            <h2 class="section-title">Your Journey in 5 Steps</h2>
-            <div class="journey-steps">
-                <div class="journey-step">
+            <h2 class="section-title reveal reveal-up">Your Journey in 5 Steps</h2>
+            <div class="journey-steps" data-stagger="150">
+                <div class="journey-step reveal reveal-up">
                     <div class="step-badge">01</div>
                     <div class="step-content">
                         <h3>Upload your photo</h3>
@@ -534,7 +525,7 @@
                     </div>
                 </div>
 
-                <div class="journey-step">
+                <div class="journey-step reveal reveal-up">
                     <div class="step-badge">02</div>
                     <div class="step-content">
                         <h3>Describe your dream life</h3>
@@ -552,7 +543,7 @@
                     </div>
                 </div>
 
-                <div class="journey-step">
+                <div class="journey-step reveal reveal-up">
                     <div class="step-badge">03</div>
                     <div class="step-content">
                         <h3>Generate your Future Self portrait</h3>
@@ -570,7 +561,7 @@
                     </div>
                 </div>
 
-                <div class="journey-step">
+                <div class="journey-step reveal reveal-up">
                     <div class="step-badge">04</div>
                     <div class="step-content">
                         <h3>Receive your wisdom letter</h3>
@@ -588,7 +579,7 @@
                     </div>
                 </div>
 
-                <div class="journey-step">
+                <div class="journey-step reveal reveal-up">
                     <div class="step-badge">05</div>
                     <div class="step-content">
                         <h3>Save your next actions</h3>
@@ -612,21 +603,21 @@
     <!-- What You Get Section -->
     <section class="what-you-get">
         <div class="container">
-            <h2 class="section-title">What You Get</h2>
-            <div class="outcomes-grid">
-                <div class="outcome-card">
+            <h2 class="section-title reveal reveal-up">What You Get</h2>
+            <div class="card-grid" data-stagger="100">
+                <div class="card outcome-card reveal reveal-up">
                     <h3>Perspective shift</h3>
                     <p>See your future self as real and achievable. This shift in perspective makes your goals feel tangible and within reach.</p>
                 </div>
-                <div class="outcome-card">
+                <div class="card outcome-card reveal reveal-up">
                     <h3>Emotional clarity</h3>
                     <p>Understand not just what you want, but why it matters. Connect with the deeper motivation behind your goals.</p>
                 </div>
-                <div class="outcome-card">
+                <div class="card outcome-card reveal reveal-up">
                     <h3>A concrete next step</h3>
                     <p>Move from dreaming to doing. Get a clear, actionable first step that moves you toward your vision.</p>
                 </div>
-                <div class="outcome-card">
+                <div class="card outcome-card reveal reveal-up">
                     <h3>A repeatable routine</h3>
                     <p>Build a sustainable practice of reflection and action. Turn occasional motivation into consistent progress.</p>
                 </div>
@@ -637,17 +628,17 @@
     <!-- Safety & Expectations -->
     <section class="safety-expectations">
         <div class="container">
-            <h2 class="section-title">Safety & Expectations</h2>
-            <div class="safety-grid">
-                <div class="safety-block">
+            <h2 class="section-title reveal reveal-up">Safety & Expectations</h2>
+            <div class="card-grid" data-stagger="100">
+                <div class="card safety-block reveal reveal-up">
                     <h4>Not medical advice</h4>
                     <p>This is motivational guidance, not a substitute for professional medical, psychological, or therapeutic support.</p>
                 </div>
-                <div class="safety-block">
+                <div class="card safety-block reveal reveal-up">
                     <h4>Emotional boundaries</h4>
                     <p>If you're experiencing mental health challenges, please seek support from qualified professionals who can help.</p>
                 </div>
-                <div class="safety-block">
+                <div class="card safety-block reveal reveal-up">
                     <h4>You control your data</h4>
                     <p>Your privacy matters. We protect your information and give you control over what you share and save.</p>
                 </div>
@@ -661,29 +652,29 @@
     <!-- Mini FAQ -->
     <section class="mini-faq">
         <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <ul class="faq-list">
-                <li class="faq-item">
+            <h2 class="section-title reveal reveal-up">Frequently Asked Questions</h2>
+            <ul class="faq-list" data-stagger="100">
+                <li class="card faq-item reveal reveal-up">
                     <div class="faq-question">How long does it take?</div>
                     <div class="faq-answer">The entire process takes just a few minutes. Upload your photo, describe your dream, and receive your Future Self portrait and wisdom letter within moments.</div>
                 </li>
-                <li class="faq-item">
+                <li class="card faq-item reveal reveal-up">
                     <div class="faq-question">Do I need an account?</div>
                     <div class="faq-answer">No account required to get started. You can try the experience immediately. Creating an account lets you save your results and track your progress over time.</div>
                 </li>
-                <li class="faq-item">
+                <li class="card faq-item reveal reveal-up">
                     <div class="faq-question">Can I redo my result?</div>
                     <div class="faq-answer">Absolutely. You can generate new results as many times as you'd like. Each attempt helps you refine your vision and deepen your understanding of your goals.</div>
                 </li>
-                <li class="faq-item">
+                <li class="card faq-item reveal reveal-up">
                     <div class="faq-question">Is my photo stored?</div>
                     <div class="faq-answer">We process your photo to generate your Future Self portrait, but we don't store it permanently unless you choose to save your results. Your privacy is our priority.</div>
                 </li>
-                <li class="faq-item">
+                <li class="card faq-item reveal reveal-up">
                     <div class="faq-question">What if I feel overwhelmed?</div>
                     <div class="faq-answer">It's normal to feel emotional when connecting with your future self. Take your time, and remember this is a tool for growth, not a source of pressure. If you need support, reach out to a professional.</div>
                 </li>
-                <li class="faq-item">
+                <li class="card faq-item reveal reveal-up">
                     <div class="faq-question">Is this free?</div>
                     <div class="faq-answer">Pricing will be introduced later; for now this is a basic prototype experience. We're focused on building something valuable before we introduce any costs.</div>
                 </li>
@@ -694,9 +685,9 @@
     <!-- Final CTA Band -->
     <section class="final-cta">
         <div class="container">
-            <h2>Ready to meet who you're becoming?</h2>
-            <a href="/get-started" class="how-btn-primary">Get Started</a>
-            <div>
+            <h2 class="section-title reveal reveal-up">Ready to meet who you're becoming?</h2>
+            <a href="/get-started" class="btn btn-primary reveal reveal-up">Get Started</a>
+            <div class="reveal reveal-up">
                 <a href="/contact" class="cta-link">Contact Support</a>
             </div>
         </div>
