@@ -1,0 +1,621 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - Future Self{% endblock %}
+
+{% block extra_styles %}
+<style>
+    /* Hero Section */
+    .contact-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        position: relative;
+        padding: 80px 0 60px;
+        margin-bottom: 0;
+    }
+
+    .contact-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .contact-hero h1 {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 24px;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        max-width: 800px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .contact-hero-subtitle {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        max-width: 700px;
+        margin: 0 auto 24px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .contact-hero-link {
+        position: relative;
+        z-index: 1;
+    }
+
+    .contact-hero-link a {
+        font-size: 16px;
+        color: var(--accent-primary);
+        text-decoration: none;
+        transition: opacity 200ms ease;
+    }
+
+    .contact-hero-link a:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+    }
+
+    /* Contact Options Section */
+    .contact-options {
+        margin: 80px 0;
+    }
+
+    .section-title {
+        font-size: 36px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 48px;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .options-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .option-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 32px;
+        transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+
+    .option-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .option-card-label {
+        display: inline-block;
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        color: white;
+        border-radius: 4px;
+        margin-bottom: 16px;
+    }
+
+    .option-card h3 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--text-primary);
+    }
+
+    .option-card p {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    /* Contact Form Section */
+    .contact-form-section {
+        margin: 80px 0;
+        padding: 40px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .form-title {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 32px;
+        color: var(--text-primary);
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 24px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 16px;
+        font-family: inherit;
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text-primary);
+        transition: border-color 200ms ease, box-shadow 200ms ease;
+    }
+
+    .form-group input[type="text"]:focus,
+    .form-group input[type="email"]:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .form-group select {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2360A5FA' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        padding-right: 40px;
+    }
+
+    .form-group textarea {
+        min-height: 140px;
+        resize: vertical;
+        font-family: inherit;
+    }
+
+    .form-error {
+        display: none;
+        margin-top: 8px;
+        font-size: 14px;
+        color: #ef4444;
+    }
+
+    .form-error.show {
+        display: block;
+    }
+
+    .form-submit {
+        width: 100%;
+        padding: 16px;
+        font-size: 16px;
+        font-weight: 500;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 200ms ease, opacity 200ms ease;
+        margin-top: 8px;
+    }
+
+    .form-submit:hover:not(:disabled) {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    .form-submit:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .form-success {
+        display: none;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .form-success.show {
+        display: block;
+    }
+
+    .form-success-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        margin: 0 auto 24px;
+    }
+
+    .form-success h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--text-primary);
+    }
+
+    .form-success p {
+        font-size: 16px;
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    /* Trust Note Section */
+    .trust-note {
+        margin: 80px 0;
+        padding: 40px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .trust-note p {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: 16px;
+    }
+
+    .trust-note a {
+        color: var(--accent-primary);
+        text-decoration: none;
+        transition: opacity 200ms ease;
+        margin: 0 4px;
+    }
+
+    .trust-note a:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+    }
+
+    /* Secondary CTA */
+    .secondary-cta {
+        margin: 80px 0 0;
+        padding: 60px 0;
+        text-align: center;
+        position: relative;
+        background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    }
+
+    .secondary-cta::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    .secondary-cta p {
+        font-size: 18px;
+        font-weight: 400;
+        color: var(--text-secondary);
+        margin-bottom: 24px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .secondary-cta .cta-btn {
+        padding: 14px 32px;
+        font-size: 16px;
+        font-weight: 500;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 200ms ease, opacity 200ms ease;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+    }
+
+    .secondary-cta .cta-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .options-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contact-hero {
+            padding: 60px 0 40px;
+        }
+
+        .contact-hero h1 {
+            font-size: 32px;
+        }
+
+        .contact-hero-subtitle {
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-size: 28px;
+        }
+
+        .contact-options,
+        .contact-form-section,
+        .trust-note,
+        .secondary-cta {
+            margin: 60px 0;
+        }
+
+        .options-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .contact-form-section,
+        .trust-note {
+            padding: 32px 24px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            font-size: 15px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p class="contact-hero-subtitle">Have questions, feedback, or need support? We're here to help. Reach out and we'll get back to you as soon as possible.</p>
+            <div class="contact-hero-link">
+                <a href="/how-it-works">Read our FAQ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Options Section -->
+    <section class="contact-options">
+        <div class="container">
+            <h2 class="section-title">How We Can Help</h2>
+            <div class="options-grid">
+                <div class="option-card">
+                    <span class="option-card-label">Product & experience</span>
+                    <h3>General Questions</h3>
+                    <p>Questions about how Future Self works, features, or your experience using the platform. We're here to help you get the most out of your journey.</p>
+                </div>
+                <div class="option-card">
+                    <span class="option-card-label">Data, privacy, consent</span>
+                    <h3>Privacy & Data</h3>
+                    <p>Concerns about your data, privacy settings, or how we handle your information. Your privacy matters, and we take it seriously.</p>
+                </div>
+                <div class="option-card">
+                    <span class="option-card-label">Collaborations & media</span>
+                    <h3>Partnerships</h3>
+                    <p>Interested in collaborating, partnerships, or media inquiries? We'd love to hear from you and explore opportunities together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <h2 class="form-title">Send Us a Message</h2>
+            
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Full Name <span style="color: var(--text-secondary); font-weight: 400;">(required)</span></label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="form-error" id="name-error">Please enter your name.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email <span style="color: var(--text-secondary); font-weight: 400;">(required)</span></label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="form-error" id="email-error">Please enter a valid email address.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a subject...</option>
+                        <option value="general">General question</option>
+                        <option value="privacy">Privacy concern</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="partnership">Partnership</option>
+                    </select>
+                    <div class="form-error" id="subject-error">Please select a subject.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message <span style="color: var(--text-secondary); font-weight: 400;">(required)</span></label>
+                    <textarea id="message" name="message" placeholder="Tell us how we can help..." required></textarea>
+                    <div class="form-error" id="message-error">Please enter your message.</div>
+                </div>
+
+                <button type="submit" class="form-submit">Send Message</button>
+            </form>
+
+            <div class="form-success" id="form-success">
+                <div class="form-success-icon">✓</div>
+                <h3>Thanks — we've received your message.</h3>
+                <p>We'll get back to you as soon as possible. Response times are typically within 24-48 hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Note Section -->
+    <section class="trust-note">
+        <div class="container">
+            <p>We typically respond within 24-48 hours. Your messages are handled with care and respect for your privacy. We use your information only to respond to your inquiry and improve our service. For more details, see our <a href="/privacy">Privacy Policy</a> and <a href="/disclaimer">Disclaimer</a>.</p>
+        </div>
+    </section>
+
+    <!-- Secondary CTA -->
+    <section class="secondary-cta">
+        <div class="container">
+            <p>Want to start instead?</p>
+            <a href="/get-started" class="cta-btn">Get Started</a>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    const form = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const subjectSelect = document.getElementById('subject');
+    const messageTextarea = document.getElementById('message');
+    const nameError = document.getElementById('name-error');
+    const emailError = document.getElementById('email-error');
+    const subjectError = document.getElementById('subject-error');
+    const messageError = document.getElementById('message-error');
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    function clearErrors() {
+        nameError.classList.remove('show');
+        emailError.classList.remove('show');
+        subjectError.classList.remove('show');
+        messageError.classList.remove('show');
+    }
+
+    function validateForm() {
+        let isValid = true;
+        clearErrors();
+
+        if (!nameInput.value.trim()) {
+            nameError.classList.add('show');
+            isValid = false;
+        }
+
+        if (!emailInput.value.trim() || !validateEmail(emailInput.value)) {
+            emailError.classList.add('show');
+            isValid = false;
+        }
+
+        if (!subjectSelect.value) {
+            subjectError.classList.add('show');
+            isValid = false;
+        }
+
+        if (!messageTextarea.value.trim()) {
+            messageError.classList.add('show');
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    // Real-time validation
+    nameInput.addEventListener('blur', function() {
+        if (!this.value.trim()) {
+            nameError.classList.add('show');
+        } else {
+            nameError.classList.remove('show');
+        }
+    });
+
+    emailInput.addEventListener('blur', function() {
+        if (!this.value.trim() || !validateEmail(this.value)) {
+            emailError.classList.add('show');
+        } else {
+            emailError.classList.remove('show');
+        }
+    });
+
+    subjectSelect.addEventListener('change', function() {
+        if (!this.value) {
+            subjectError.classList.add('show');
+        } else {
+            subjectError.classList.remove('show');
+        }
+    });
+
+    messageTextarea.addEventListener('blur', function() {
+        if (!this.value.trim()) {
+            messageError.classList.add('show');
+        } else {
+            messageError.classList.remove('show');
+        }
+    });
+
+    // Form submission
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
+        // Hide form and show success message
+        form.style.display = 'none';
+        formSuccess.classList.add('show');
+
+        // Scroll to success message
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,595 @@
+{% extends "base.html" %}
+
+{% block title %}About - Future Self{% endblock %}
+
+{% block extra_styles %}
+<style>
+    /* Hero Section */
+    .about-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        position: relative;
+        padding: 80px 0 60px;
+        margin-bottom: 0;
+    }
+
+    .about-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .about-hero h1 {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 24px;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        max-width: 800px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .about-hero-subtitle {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto 40px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .about-hero-cta-group {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+        flex-wrap: wrap;
+    }
+
+    .about-btn-primary {
+        padding: 14px 32px;
+        font-size: 16px;
+        font-weight: 500;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 200ms ease, opacity 200ms ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .about-btn-primary:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    .about-btn-secondary {
+        padding: 14px 32px;
+        font-size: 16px;
+        font-weight: 400;
+        background: transparent;
+        color: var(--text-primary);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 200ms ease, border-color 200ms ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .about-btn-secondary:hover {
+        background: var(--bg-surface);
+        border-color: var(--accent-primary);
+    }
+
+    /* The Why Section */
+    .the-why {
+        margin: 80px 0;
+    }
+
+    .section-title {
+        font-size: 36px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 48px;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+
+    .why-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 32px;
+        transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+
+    .why-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .why-card h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--text-primary);
+    }
+
+    .why-card p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--text-secondary);
+    }
+
+    /* The Method Section */
+    .the-method {
+        margin: 80px 0;
+        padding: 60px 0;
+        background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    }
+
+    .method-steps {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .method-step {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 48px;
+        position: relative;
+    }
+
+    .method-step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        left: 24px;
+        top: 64px;
+        width: 2px;
+        height: calc(100% + 48px);
+        background: linear-gradient(180deg, var(--accent-primary), transparent);
+        opacity: 0.3;
+        animation: flowUp 3s ease-in-out infinite;
+    }
+
+    @keyframes flowUp {
+        0% { opacity: 0.3; }
+        50% { opacity: 0.6; }
+        100% { opacity: 0.3; }
+    }
+
+    .method-step-number {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: 700;
+        color: white;
+        margin-right: 24px;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .method-step-content {
+        flex: 1;
+    }
+
+    .method-step-content h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+    }
+
+    .method-step-content p {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    /* Principles Section */
+    .principles {
+        margin: 80px 0;
+    }
+
+    .principles-list {
+        max-width: 700px;
+        margin: 0 auto;
+        list-style: none;
+    }
+
+    .principle-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 32px;
+        padding: 24px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        transition: transform 200ms ease, border-color 200ms ease;
+    }
+
+    .principle-item:hover {
+        transform: translateX(4px);
+        border-color: var(--accent-primary);
+    }
+
+    .principle-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin-right: 20px;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .principle-icon::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: inherit;
+        filter: blur(8px);
+        opacity: 0.5;
+        z-index: -1;
+    }
+
+    .principle-content {
+        flex: 1;
+    }
+
+    .principle-content h4 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 4px;
+        color: var(--text-primary);
+    }
+
+    .principle-content p {
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    /* Trust & Boundaries Section */
+    .trust-boundaries {
+        margin: 80px 0;
+        padding: 40px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        text-align: center;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .trust-boundaries p {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: 16px;
+    }
+
+    .trust-boundaries a {
+        color: var(--accent-primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: opacity 200ms ease;
+    }
+
+    .trust-boundaries a:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+    }
+
+    /* Final CTA Band */
+    .final-cta {
+        margin: 80px 0 0;
+        padding: 80px 0;
+        text-align: center;
+        position: relative;
+        background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    }
+
+    .final-cta::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    .final-cta h2 {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: var(--text-primary);
+        position: relative;
+        z-index: 1;
+    }
+
+    .final-cta p {
+        font-size: 18px;
+        font-weight: 400;
+        color: var(--text-secondary);
+        margin-bottom: 32px;
+        opacity: 0.8;
+        position: relative;
+        z-index: 1;
+    }
+
+    .final-cta .about-btn-primary {
+        margin-bottom: 16px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .final-cta .cta-link {
+        display: inline-block;
+        font-size: 16px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 200ms ease;
+        position: relative;
+        z-index: 1;
+    }
+
+    .final-cta .cta-link:hover {
+        color: var(--accent-primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .why-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .about-hero {
+            padding: 60px 0 40px;
+        }
+
+        .about-hero h1 {
+            font-size: 32px;
+        }
+
+        .about-hero-subtitle {
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-size: 28px;
+        }
+
+        .the-why,
+        .the-method,
+        .principles,
+        .trust-boundaries,
+        .final-cta {
+            margin: 60px 0;
+        }
+
+        .why-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .method-step {
+            margin-bottom: 32px;
+        }
+
+        .method-step-content h3 {
+            font-size: 20px;
+        }
+
+        .principle-item {
+            padding: 20px;
+        }
+
+        .trust-boundaries {
+            padding: 32px 24px;
+        }
+
+        .final-cta {
+            padding: 60px 0;
+        }
+
+        .final-cta h2 {
+            font-size: 28px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>Meet Your Future Self</h1>
+            <p class="about-hero-subtitle">The person you become isn't built in a day. It's built through consistent choices, intentional actions, and the quiet commitment to show up—even when it's hard.</p>
+            <div class="about-hero-cta-group">
+                <a href="/get-started" class="about-btn-primary">Start Your Journey</a>
+                <a href="/how-it-works" class="about-btn-secondary">How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Why Section -->
+    <section class="the-why">
+        <div class="container">
+            <h2 class="section-title">The Why</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <h3>Clarity</h3>
+                    <p>Every decision becomes easier when you know who you're becoming. We help you see the path clearly, without the noise of endless options.</p>
+                </div>
+                <div class="why-card">
+                    <h3>Consistency</h3>
+                    <p>Big goals happen through small, daily actions. We turn your vision into a sustainable practice that fits your real life.</p>
+                </div>
+                <div class="why-card">
+                    <h3>Identity</h3>
+                    <p>You don't achieve goals—you become the person who naturally lives them. We help you build the identity that makes success inevitable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Method Section -->
+    <section class="the-method">
+        <div class="container">
+            <h2 class="section-title">The Method</h2>
+            <div class="method-steps">
+                <div class="method-step">
+                    <div class="method-step-number">1</div>
+                    <div class="method-step-content">
+                        <h3>Upload a photo</h3>
+                        <p>Share a moment that represents where you are today. This becomes the starting point of your journey.</p>
+                    </div>
+                </div>
+                <div class="method-step">
+                    <div class="method-step-number">2</div>
+                    <div class="method-step-content">
+                        <h3>Describe your dream life</h3>
+                        <p>Tell us about the future you want to build. Be specific, be honest, be bold. This is your vision.</p>
+                    </div>
+                </div>
+                <div class="method-step">
+                    <div class="method-step-number">3</div>
+                    <div class="method-step-content">
+                        <h3>Receive your Future Self message</h3>
+                        <p>Get a personalized letter from the person you're becoming—wisdom, perspective, and encouragement from your future self.</p>
+                    </div>
+                </div>
+                <div class="method-step">
+                    <div class="method-step-number">4</div>
+                    <div class="method-step-content">
+                        <h3>Turn it into daily actions</h3>
+                        <p>Your vision becomes a clear, actionable plan. Small steps, consistent progress, real transformation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principles Section -->
+    <section class="principles">
+        <div class="container">
+            <h2 class="section-title">Our Principles</h2>
+            <ul class="principles-list">
+                <li class="principle-item">
+                    <div class="principle-icon">🔒</div>
+                    <div class="principle-content">
+                        <h4>Privacy-first mindset</h4>
+                        <p>Your goals, your data, your journey. We protect what matters most to you.</p>
+                    </div>
+                </li>
+                <li class="principle-item">
+                    <div class="principle-icon">✨</div>
+                    <div class="principle-content">
+                        <h4>No shame, only progress</h4>
+                        <p>Every day is a new opportunity. We celebrate where you are and support where you're going.</p>
+                    </div>
+                </li>
+                <li class="principle-item">
+                    <div class="principle-icon">📈</div>
+                    <div class="principle-content">
+                        <h4>Small steps compound</h4>
+                        <p>One percent better each day adds up to extraordinary change. We focus on sustainable progress.</p>
+                    </div>
+                </li>
+                <li class="principle-item">
+                    <div class="principle-icon">🎯</div>
+                    <div class="principle-content">
+                        <h4>You stay in control</h4>
+                        <p>This is your journey. We provide guidance, but you make the decisions that shape your future.</p>
+                    </div>
+                </li>
+                <li class="principle-item">
+                    <div class="principle-icon">🌱</div>
+                    <div class="principle-content">
+                        <h4>Designed for real life</h4>
+                        <p>No perfect conditions required. We build tools that work in the messy, beautiful reality of everyday life.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Trust & Boundaries Section -->
+    <section class="trust-boundaries">
+        <div class="container">
+            <p>Future Self provides motivational guidance and tools for personal development. This service is not a substitute for professional medical, psychological, or therapeutic advice. If you're experiencing mental health challenges, please seek support from qualified professionals. We're here to support your growth journey, but your wellbeing comes first.</p>
+            <p><a href="/disclaimer">Read our Disclaimer</a></p>
+        </div>
+    </section>
+
+    <!-- Final CTA Band -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to meet your future self?</h2>
+            <p>Start building the life you want, one intentional step at a time.</p>
+            <a href="/get-started" class="about-btn-primary">Get Started</a>
+            <div>
+                <a href="/contact" class="cta-link">Contact us</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

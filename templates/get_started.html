@@ -1,0 +1,698 @@
+{% extends "base.html" %}
+
+{% block title %}Get Started - Future Self{% endblock %}
+
+{% block extra_styles %}
+<style>
+    /* Hero Section */
+    .get-started-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        position: relative;
+        padding: 80px 0 60px;
+        margin-bottom: 0;
+    }
+
+    .get-started-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .get-started-hero h1 {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 24px;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        max-width: 800px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .get-started-hero-subtitle {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto 40px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .get-started-hero-cta-group {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+        flex-wrap: wrap;
+    }
+
+    .gs-btn-primary {
+        padding: 14px 32px;
+        font-size: 16px;
+        font-weight: 500;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 200ms ease, opacity 200ms ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .gs-btn-primary:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    .gs-btn-primary:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .gs-btn-secondary {
+        padding: 14px 32px;
+        font-size: 16px;
+        font-weight: 400;
+        background: transparent;
+        color: var(--text-primary);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 200ms ease, border-color 200ms ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .gs-btn-secondary:hover {
+        background: var(--bg-surface);
+        border-color: var(--accent-primary);
+    }
+
+    /* What You'll Do Section */
+    .what-youll-do {
+        margin: 80px 0;
+    }
+
+    .section-title {
+        font-size: 36px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 48px;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .step-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 32px;
+        text-align: center;
+        transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+
+    .step-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .step-card h3 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--text-primary);
+    }
+
+    .step-card p {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    /* What You'll Need Section */
+    .what-youll-need {
+        margin: 80px 0;
+        padding: 40px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .what-youll-need h2 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        text-align: center;
+    }
+
+    .checklist {
+        list-style: none;
+    }
+
+    .checklist-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 16px;
+        font-size: 16px;
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    .checklist-item::before {
+        content: '✓';
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        margin-right: 12px;
+        flex-shrink: 0;
+    }
+
+    /* Trust & Consent Section */
+    .trust-consent {
+        margin: 80px 0;
+        padding: 40px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .trust-consent h2 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        text-align: center;
+    }
+
+    .consent-checkbox-group {
+        margin-bottom: 24px;
+    }
+
+    .consent-checkbox {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 16px;
+        cursor: pointer;
+    }
+
+    .consent-checkbox input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+        margin-top: 2px;
+        cursor: pointer;
+        accent-color: var(--accent-primary);
+        flex-shrink: 0;
+    }
+
+    .consent-checkbox label {
+        font-size: 15px;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        cursor: pointer;
+        flex: 1;
+    }
+
+    .consent-checkbox label a {
+        color: var(--accent-primary);
+        text-decoration: none;
+        transition: opacity 200ms ease;
+    }
+
+    .consent-checkbox label a:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+    }
+
+    /* Form Section */
+    #start-form {
+        margin: 80px 0;
+        padding: 40px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .form-title {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 32px;
+        color: var(--text-primary);
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 24px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+    }
+
+    .form-group label .optional {
+        font-weight: 400;
+        color: var(--text-secondary);
+        font-size: 14px;
+    }
+
+    .form-group input[type="file"],
+    .form-group input[type="text"],
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 16px;
+        font-family: inherit;
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text-primary);
+        transition: border-color 200ms ease, box-shadow 200ms ease;
+    }
+
+    .form-group input[type="file"] {
+        cursor: pointer;
+        padding: 8px;
+    }
+
+    .form-group input[type="file"]::file-selector-button {
+        padding: 8px 16px;
+        margin-right: 12px;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        transition: opacity 200ms ease;
+    }
+
+    .form-group input[type="file"]::file-selector-button:hover {
+        opacity: 0.9;
+    }
+
+    .form-group input[type="text"]:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+        font-family: inherit;
+    }
+
+    .form-error {
+        display: none;
+        margin-top: 8px;
+        font-size: 14px;
+        color: #ef4444;
+    }
+
+    .form-error.show {
+        display: block;
+    }
+
+    .form-submit {
+        width: 100%;
+        padding: 16px;
+        font-size: 16px;
+        font-weight: 500;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 200ms ease, opacity 200ms ease;
+        margin-top: 8px;
+    }
+
+    .form-submit:hover:not(:disabled) {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    .form-submit:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .form-submit.loading {
+        position: relative;
+        color: transparent;
+    }
+
+    .form-submit.loading::after {
+        content: 'Generating...';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+    }
+
+    /* Support Links */
+    .support-links {
+        text-align: center;
+        margin-top: 32px;
+        font-size: 14px;
+        color: var(--text-secondary);
+    }
+
+    .support-links a {
+        color: var(--accent-primary);
+        text-decoration: none;
+        transition: opacity 200ms ease;
+        margin: 0 8px;
+    }
+
+    .support-links a:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .steps-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .get-started-hero {
+            padding: 60px 0 40px;
+        }
+
+        .get-started-hero h1 {
+            font-size: 32px;
+        }
+
+        .get-started-hero-subtitle {
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-size: 28px;
+        }
+
+        .what-youll-do,
+        .what-youll-need,
+        .trust-consent,
+        #start-form {
+            margin: 60px 0;
+        }
+
+        .steps-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .what-youll-need,
+        .trust-consent,
+        #start-form {
+            padding: 32px 24px;
+        }
+
+        .form-group input[type="file"],
+        .form-group input[type="text"],
+        .form-group textarea {
+            font-size: 15px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="get-started-hero">
+        <div class="container">
+            <h1>Start Your Journey</h1>
+            <p class="get-started-hero-subtitle">Connect with your future self and turn your vision into daily action. The journey begins with a single step.</p>
+            <div class="get-started-hero-cta-group">
+                <a href="#start-form" class="gs-btn-primary">Continue</a>
+                <a href="/how-it-works" class="gs-btn-secondary">How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Do Section -->
+    <section class="what-youll-do">
+        <div class="container">
+            <h2 class="section-title">What You'll Do</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <h3>Upload a photo</h3>
+                    <p>Share a clear photo of yourself. This becomes the starting point for your transformation journey.</p>
+                </div>
+                <div class="step-card">
+                    <h3>Describe your dream life</h3>
+                    <p>Tell us about the future you want to build. Be honest, be specific, be bold about your aspirations.</p>
+                </div>
+                <div class="step-card">
+                    <h3>Receive your Future Self message</h3>
+                    <p>Get a personalized portrait and wisdom letter from the person you're becoming—insights and encouragement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Need Section -->
+    <section class="what-youll-need">
+        <div class="container">
+            <h2>What You'll Need</h2>
+            <ul class="checklist">
+                <li class="checklist-item">A clear selfie photo</li>
+                <li class="checklist-item">A quiet 2 minutes</li>
+                <li class="checklist-item">Honest answers</li>
+                <li class="checklist-item">An open mind (but keep it grounded)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Trust & Consent Section -->
+    <section class="trust-consent">
+        <div class="container">
+            <h2>Trust & Consent</h2>
+            <div class="consent-checkbox-group">
+                <div class="consent-checkbox">
+                    <input type="checkbox" id="consent-medical" name="consent-medical" required>
+                    <label for="consent-medical">I understand this is motivational guidance, not medical advice.</label>
+                </div>
+                <div class="consent-checkbox">
+                    <input type="checkbox" id="consent-terms" name="consent-terms" required>
+                    <label for="consent-terms">I agree to the <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.</label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section id="start-form">
+        <div class="container">
+            <h2 class="form-title">Generate Your Future Self</h2>
+            <form id="future-self-form" action="/generate" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="image">Photo <span class="optional">(required)</span></label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <div class="form-error" id="image-error">Please upload a photo.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Name <span class="optional">(optional)</span></label>
+                    <input type="text" id="name" name="name" placeholder="Your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="dream">Describe your dream life <span class="optional">(required)</span></label>
+                    <textarea id="dream" name="dream" placeholder="Tell us about the future you want to build. Be specific about your goals, aspirations, and the person you're becoming..." required></textarea>
+                    <div class="form-error" id="dream-error">Please describe your dream life.</div>
+                </div>
+
+                <button type="submit" class="form-submit" id="submit-btn" disabled>Generate My Future Self</button>
+            </form>
+
+            <div class="support-links">
+                <a href="/contact">Need help?</a>
+                <a href="/disclaimer">Read the Disclaimer</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Consent checkboxes and form validation
+    const consentMedical = document.getElementById('consent-medical');
+    const consentTerms = document.getElementById('consent-terms');
+    const submitBtn = document.getElementById('submit-btn');
+    const form = document.getElementById('future-self-form');
+    const imageInput = document.getElementById('image');
+    const dreamTextarea = document.getElementById('dream');
+    const imageError = document.getElementById('image-error');
+    const dreamError = document.getElementById('dream-error');
+
+    function updateSubmitButton() {
+        const bothChecked = consentMedical.checked && consentTerms.checked;
+        const hasImage = imageInput.files.length > 0;
+        const hasDream = dreamTextarea.value.trim().length > 0;
+        
+        submitBtn.disabled = !(bothChecked && hasImage && hasDream);
+    }
+
+    // Listen to consent checkboxes
+    consentMedical.addEventListener('change', updateSubmitButton);
+    consentTerms.addEventListener('change', updateSubmitButton);
+
+    // Listen to form inputs
+    imageInput.addEventListener('change', function() {
+        updateSubmitButton();
+        if (this.files.length > 0) {
+            imageError.classList.remove('show');
+        }
+    });
+
+    dreamTextarea.addEventListener('input', function() {
+        updateSubmitButton();
+        if (this.value.trim().length > 0) {
+            dreamError.classList.remove('show');
+        }
+    });
+
+    // Form submission
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Validate inputs
+        let hasErrors = false;
+
+        if (imageInput.files.length === 0) {
+            imageError.classList.add('show');
+            hasErrors = true;
+        } else {
+            imageError.classList.remove('show');
+        }
+
+        if (dreamTextarea.value.trim().length === 0) {
+            dreamError.classList.add('show');
+            hasErrors = true;
+        } else {
+            dreamError.classList.remove('show');
+        }
+
+        if (hasErrors) {
+            return;
+        }
+
+        // Check consent
+        if (!consentMedical.checked || !consentTerms.checked) {
+            alert('Please confirm both consent checkboxes before submitting.');
+            return;
+        }
+
+        // Show loading state
+        submitBtn.classList.add('loading');
+        submitBtn.disabled = true;
+
+        // Submit form
+        const formData = new FormData(form);
+        
+        fetch('/generate', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert('Error: ' + data.error);
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                updateSubmitButton();
+            } else if (data.success) {
+                // Success - could redirect to results page or show results
+                // For now, show the results in an alert or redirect
+                alert('Success! Your Future Self has been generated. (Results display will be implemented in the dashboard)');
+                // Reset form
+                form.reset();
+                consentMedical.checked = false;
+                consentTerms.checked = false;
+                updateSubmitButton();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+            updateSubmitButton();
+        });
+    });
+
+    // Smooth scroll for Continue button
+    document.querySelector('a[href="#start-form"]')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('start-form').scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
+{% endblock %}

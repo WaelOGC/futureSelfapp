@@ -24,6 +24,42 @@ REPLICATE_MODEL = "black-forest-labs/flux-dev"
 def index():
     return render_template("index.html")
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/how-it-works")
+def how_it_works():
+    return render_template("how_it_works.html")
+
+@app.route("/get-started")
+def get_started():
+    return render_template("get_started.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
+
+@app.route("/terms")
+def terms():
+    return render_template("terms.html")
+
+@app.route("/disclaimer")
+def disclaimer():
+    return render_template("disclaimer.html")
+
+@app.route("/cookies")
+def cookies():
+    return render_template("cookies.html")
+
+@app.errorhandler(404)
+def not_found(error):
+    return render_template("404.html"), 404
+
 @app.route("/generate", methods=["POST"])
 def generate():
     if not REPLICATE_API_TOKEN or not OPENAI_API_KEY:
