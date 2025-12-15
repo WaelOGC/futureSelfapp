@@ -1,4 +1,13 @@
-# Future Self Landing Page Design
+**Title**: Landing Page Design  
+**Status**: Draft  
+**Version**: 1.0  
+**Owner**: FutureSelfApp Team  
+**Last Updated**: 2024-12-19  
+**Applies To**: UI, Design
+
+---
+
+# FutureSelfApp Landing Page Design
 
 ## Design Philosophy
 
@@ -407,5 +416,8 @@
 
 ---
 
-**Document Status**: Complete design specification ready for implementation  
-**Next Step**: Frontend development following this specification
+**See also**:
+- [Master Documentation Index](docs/00-docs-index.md)
+- [Glossary & Canonical Naming](docs/00-glossary.md)
+- [Page Structure](docs/02-page-structure.md)
+- [Architecture Refactor Summary](ARCHITECTURE_REFACTOR_SUMMARY.md)

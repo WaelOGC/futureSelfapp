@@ -1,6 +1,15 @@
-# Support and Help: Future Self
+**Title**: Support and Help  
+**Status**: Draft  
+**Version**: 1.0  
+**Owner**: FutureSelfApp Team  
+**Last Updated**: 2024-12-19  
+**Applies To**: UI, Support
 
-This document describes the support system, help resources, and user assistance features available in Future Self.
+---
+
+# Support and Help: FutureSelfApp
+
+This document describes the support system, help resources, and user assistance features available in FutureSelfApp.
 
 ## Support Floating Button
 
@@ -72,20 +81,20 @@ The scroll-to-top button allows users to quickly return to the top of long pages
 ## Help Center
 
 ### Purpose
-The Help Center is a comprehensive knowledge base providing self-service support resources for all Future Self features and tools.
+The Help Center is a comprehensive knowledge base providing self-service support resources for all FutureSelfApp features and AI Services.
 
 ### Structure
 
 **Main Sections**:
 - **Getting Started**: Introduction to Future Self, account setup, first steps
-- **Tool Guides**: Detailed guides for each AI tool
+- **Tool Guides**: Detailed guides for each AI Service (displayed as "tools" in UI)
 - **Account & Billing**: Credits, subscriptions, payment, account management
 - **Troubleshooting**: Common issues and solutions
 - **FAQs**: Frequently asked questions (integrated, not standalone)
 
 ### Tool-Specific Guides
 
-Each AI tool has dedicated help documentation:
+Each AI Service has dedicated help documentation:
 
 **The Time Capsule Guide**:
 - How to upload photos
@@ -296,6 +305,8 @@ Each AI tool has dedicated help documentation:
 
 ---
 
-**Document Purpose**: Reference for support system architecture and help resources  
-**Last Updated**: Project documentation foundation creation  
-**Maintained By**: Development team
+**See also**:
+- [Master Documentation Index](00-docs-index.md)
+- [Glossary & Canonical Naming](00-glossary.md)
+- [Page Structure](02-page-structure.md)
+- [Dashboard UX Flow](08-dashboard-ux-flow.md)

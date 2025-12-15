@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Dev Dashboard</title>
+    <style>
+        body {
+            font-family: monospace;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #ccc;
+        }
+        h1 {
+            color: #fff;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #aaa;
+        }
+        select, textarea {
+            width: 100%;
+            padding: 8px;
+            background: #2a2a2a;
+            color: #ccc;
+            border: 1px solid #444;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        button {
+            padding: 10px 20px;
+            background: #0066cc;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: monospace;
+        }
+        button:hover {
+            background: #0052a3;
+        }
+        button:disabled {
+            background: #444;
+            cursor: not-allowed;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            white-space: pre-wrap;
+            font-size: 12px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .error {
+            color: #ff6b6b;
+        }
+        .success {
+            color: #51cf66;
+        }
+        .loading {
+            color: #ffd43b;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Dev Dashboard</h1>
+    <p style="color: #888;">Internal development tool for testing AI providers</p>
+    
+    <div id="envStatus" style="margin-bottom: 20px; padding: 15px; background: #2a2a2a; border: 1px solid #444;">
+        <h2 style="margin-top: 0; color: #fff; font-size: 16px;">Environment Status</h2>
+        <div id="openaiStatus" style="margin: 5px 0;">Checking...</div>
+        <div id="openaiDetails" style="margin: 5px 0; font-size: 12px; color: #888;"></div>
+    </div>
+    
+    <div class="form-group">
+        <label for="provider">Provider:</label>
+        <select id="provider">
+            <option value="OPENAI">OPENAI</option>
+            <option value="GEMINI">GEMINI</option>
+            <option value="ANTHROPIC">ANTHROPIC</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="task">Task:</label>
+        <select id="task">
+            <option value="TEXT_GENERATION">TEXT_GENERATION</option>
+            <option value="IMAGE_GENERATION">IMAGE_GENERATION</option>
+            <option value="IMAGE_EDIT">IMAGE_EDIT</option>
+            <option value="IMAGE_ANALYSIS">IMAGE_ANALYSIS</option>
+            <option value="AUDIO_TRANSCRIPTION">AUDIO_TRANSCRIPTION</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="payload">Payload (JSON):</label>
+        <textarea id="payload" placeholder='{"prompt": "Hello, world!", "system": "You are a helpful assistant."}'></textarea>
+    </div>
+    
+    <button id="runBtn" onclick="runTest()">Run Test</button>
+    
+    <div id="result"></div>
+
+    <script>
+        // Auto-check environment status on page load
+        async function checkEnvStatus() {
+            const statusDiv = document.getElementById('openaiStatus');
+            const runBtn = document.getElementById('runBtn');
+            
+            try {
+                const response = await fetch('/dev/env');
+                const data = await response.json();
+                
+                // Check both Python and Node.js side for key availability
+                const pythonLoaded = data.python && data.python.OPENAI_API_KEY_loaded;
+                const nodejsLoaded = data.nodejs && data.nodejs.openaiKeyLoaded;
+                const keyLoaded = pythonLoaded || nodejsLoaded;
+                
+                const detailsDiv = document.getElementById('openaiDetails');
+                
+                if (keyLoaded) {
+                    const last4 = (data.python && data.python.openaiKeyLast4) || 
+                                  (data.nodejs && data.nodejs.openaiKeyLast4) || 
+                                  '****';
+                    const keyFormat = (data.python && data.python.keyFormat) || 
+                                     (data.nodejs && data.nodejs.keyFormat) || 
+                                     'unknown';
+                    const keyLength = (data.python && data.python.keyLength) || 
+                                     (data.nodejs && data.nodejs.keyLength) || 
+                                     0;
+                    const envPath = (data.python && data.python.envPathUsed) || 
+                                   (data.nodejs && data.nodejs.envPathUsed) || 
+                                   'unknown';
+                    
+                    statusDiv.innerHTML = `✅ OpenAI key loaded (last 4: ${last4})`;
+                    statusDiv.style.color = '#51cf66';
+                    
+                    // Show details
+                    let details = `Format: ${keyFormat} | Length: ${keyLength} chars | Path: ${envPath}`;
+                    detailsDiv.innerHTML = details;
+                    detailsDiv.style.color = '#888';
+                    
+                    runBtn.disabled = false;
+                } else {
+                    statusDiv.innerHTML = '❌ OpenAI key missing';
+                    statusDiv.style.color = '#ff6b6b';
+                    const envPath = (data.python && data.python.envPathUsed) || 
+                                   (data.nodejs && data.nodejs.envPathUsed) || 
+                                   'unknown';
+                    detailsDiv.innerHTML = `Expected .env file at: ${envPath}`;
+                    detailsDiv.style.color = '#ff6b6b';
+                    runBtn.disabled = true;
+                }
+            } catch (error) {
+                statusDiv.innerHTML = '❌ Error checking OpenAI key: ' + error.message;
+                statusDiv.style.color = '#ff6b6b';
+                runBtn.disabled = true;
+            }
+        }
+        
+        // Run check on page load
+        window.addEventListener('DOMContentLoaded', checkEnvStatus);
+        
+        async function runTest() {
+            const provider = document.getElementById('provider').value;
+            const task = document.getElementById('task').value;
+            const payloadText = document.getElementById('payload').value.trim();
+            const resultDiv = document.getElementById('result');
+            const runBtn = document.getElementById('runBtn');
+            
+            // Disable button
+            runBtn.disabled = true;
+            runBtn.textContent = 'Running...';
+            
+            // Clear previous result
+            resultDiv.textContent = '';
+            resultDiv.className = 'loading';
+            resultDiv.textContent = 'Sending request...';
+            
+            try {
+                // Parse payload JSON
+                let payload;
+                if (!payloadText) {
+                    payload = {};
+                } else {
+                    try {
+                        payload = JSON.parse(payloadText);
+                    } catch (e) {
+                        throw new Error('Invalid JSON in payload: ' + e.message);
+                    }
+                }
+                
+                // Make request
+                const response = await fetch('/dev/run', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        provider,
+                        task,
+                        payload
+                    })
+                });
+                
+                const data = await response.json();
+                
+                // Display result
+                resultDiv.className = response.ok ? 'success' : 'error';
+                resultDiv.textContent = JSON.stringify(data, null, 2);
+                
+            } catch (error) {
+                resultDiv.className = 'error';
+                resultDiv.textContent = 'Error: ' + error.message + '\n\n' + error.stack;
+            } finally {
+                runBtn.disabled = false;
+                runBtn.textContent = 'Run Test';
+            }
+        }
+        
+        // Allow Enter key to submit (Ctrl+Enter)
+        document.getElementById('payload').addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                runTest();
+            }
+        });
+    </script>
+</body>
+</html>

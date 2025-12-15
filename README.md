@@ -1,8 +1,17 @@
-# Timeline 2050: Future Self AI
+**Title**: README  
+**Status**: Draft  
+**Version**: 1.0  
+**Owner**: FutureSelfApp Team  
+**Last Updated**: 2024-12-19  
+**Applies To**: Platform
+
+---
+
+# FutureSelfApp
 
 ## Overview
 
-**Timeline 2050: Future Self AI** is a web application that combines AI-powered image aging with personalized wisdom letter generation. Users upload a photo of themselves and share their dreams, and the app generates:
+**FutureSelfApp** is a web application that combines AI-powered image aging with personalized wisdom letter generation. Users upload a photo of themselves and share their dreams, and the app generates:
 
 - **Aged Selfie**: A realistic AI-generated image showing how they would look in 2050, created using advanced image processing models
 - **Wisdom Letter**: A personalized 100-word letter from their "future self" offering guidance and reflection based on their dreams
@@ -158,3 +167,11 @@ pip install -r requirements.txt
 ## License
 
 This project is open source and available for personal and educational use.
+
+---
+
+**See also**:
+- [Master Documentation Index](docs/00-docs-index.md)
+- [Glossary & Canonical Naming](docs/00-glossary.md)
+- [Project Overview](docs/01-project-overview.md)
+- [Technical Roadmap](PLAN.md)

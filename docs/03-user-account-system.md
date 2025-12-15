@@ -1,10 +1,19 @@
-# User Account System: Future Self
+**Title**: User Account System  
+**Status**: Draft  
+**Version**: 1.0  
+**Owner**: FutureSelfApp Team  
+**Last Updated**: 2024-12-19  
+**Applies To**: Accounts, Backend
+
+---
+
+# User Account System: FutureSelfApp
 
 This document describes the user account system, including what data is stored, how accounts are structured, and the features available to users.
 
 ## Account Structure
 
-A Future Self user account contains the following core components:
+A FutureSelfApp user account contains the following core components:
 
 ### Profile Information
 - **Basic Details**:
@@ -38,7 +47,7 @@ A Future Self user account contains the following core components:
 ### Saved Work & Memory
 
 #### Tool-Specific Memory
-Each AI tool maintains its own memory system for user-generated content:
+Each AI Service maintains its own memory system for user-generated content:
 
 **The Time Capsule**:
 - Saved aged photos
@@ -151,7 +160,7 @@ The referral system operates on **conditions-based rewards**:
 
 ## Data Ownership
 
-All account data, generated content, and user information belong to **Future Self** as a product. This includes:
+All account data, generated content, and user information belong to **FutureSelfApp** as a product. This includes:
 
 - User profile information
 - Generated AI outputs (images, videos, text)
@@ -182,6 +191,8 @@ Users have the right to:
 
 ---
 
-**Document Purpose**: Reference for account system architecture and data structure  
-**Last Updated**: Project documentation foundation creation  
-**Maintained By**: Development team
+**See also**:
+- [Master Documentation Index](00-docs-index.md)
+- [Glossary & Canonical Naming](00-glossary.md)
+- [User Account Management](10-user-account-management.md)
+- [Credits and Subscriptions](07-credits-and-subscriptions.md)

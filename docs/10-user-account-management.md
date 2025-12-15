@@ -1,4 +1,13 @@
-# User Account Pages and Management System: Future Self
+**Title**: User Account Pages and Management System  
+**Status**: Draft  
+**Version**: 1.0  
+**Owner**: FutureSelfApp Team  
+**Last Updated**: 2024-12-19  
+**Applies To**: Accounts, UI
+
+---
+
+# User Account Pages and Management System: FutureSelfApp
 
 This document defines everything that exists inside the user account area, including pages, functionality, data visibility, and user control. The account area is where users manage their identity, security, usage, credits, subscriptions, saved work, and account settings.
 
@@ -6,7 +15,7 @@ This document defines everything that exists inside the user account area, inclu
 
 ### Purpose of the Account Area
 
-**Definition**: The account area is the centralized management hub where users control all aspects of their Future Self account, identity, security, usage, and preferences.
+**Definition**: The account area is the centralized management hub where users control all aspects of their FutureSelfApp account, identity, security, usage, and preferences.
 
 **Primary Functions**:
 - **Identity Management**: Control profile information and account identity
@@ -79,7 +88,7 @@ This document defines everything that exists inside the user account area, inclu
 
 **Dashboard Workspace**:
 - **Purpose**: Active tool usage and content generation
-- **Focus**: Creating new content, using AI tools
+- **Focus**: Creating new content, using AI Services
 - **Context**: Tool-specific, workflow-oriented
 - **State**: Dynamic, changing with tool selection
 
@@ -997,6 +1006,8 @@ This document defines everything that exists inside the user account area, inclu
 
 ---
 
-**Document Purpose**: Reference for user account pages and management system  
-**Last Updated**: Project documentation foundation creation  
-**Maintained By**: Development team
+**See also**:
+- [Master Documentation Index](00-docs-index.md)
+- [Glossary & Canonical Naming](00-glossary.md)
+- [User Account System](03-user-account-system.md)
+- [Credits and Subscriptions](07-credits-and-subscriptions.md)

@@ -1,6 +1,15 @@
-# Dashboard UX Flow and Navigation Logic: Future Self
+**Title**: Dashboard UX Flow and Navigation Logic  
+**Status**: Draft  
+**Version**: 1.0  
+**Owner**: FutureSelfApp Team  
+**Last Updated**: 2024-12-19  
+**Applies To**: UI, UX
 
-This document defines how users move through the dashboard, access tools, view their work, manage their account, and interact with the platform. This is a UX flow and navigation logic document, not a visual design specification.
+---
+
+# Dashboard UX Flow and Navigation Logic: FutureSelfApp
+
+This document defines how users move through the dashboard, access AI Services, view their work, manage their account, and interact with the platform. This is a UX flow and navigation logic document, not a visual design specification.
 
 ## Dashboard Entry Points
 
@@ -605,6 +614,8 @@ The main workspace area is the primary focus zone where users see outputs, inter
 
 ---
 
-**Document Purpose**: Reference for dashboard UX flow and navigation logic  
-**Last Updated**: Project documentation foundation creation  
-**Maintained By**: Development team
+**See also**:
+- [Master Documentation Index](00-docs-index.md)
+- [Glossary & Canonical Naming](00-glossary.md)
+- [Dashboard Architecture](04-dashboard-architecture.md)
+- [Page Structure](02-page-structure.md)

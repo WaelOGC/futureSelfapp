@@ -1,6 +1,15 @@
-# Dashboard Architecture: Future Self
+**Title**: Dashboard Architecture  
+**Status**: Draft  
+**Version**: 1.0  
+**Owner**: FutureSelfApp Team  
+**Last Updated**: 2024-12-19  
+**Applies To**: UI, Dashboard
 
-This document explains the conceptual architecture of the Future Self dashboard, including layout structure, navigation patterns, and workspace organization.
+---
+
+# Dashboard Architecture: FutureSelfApp
+
+This document explains the conceptual architecture of the FutureSelfApp dashboard, including layout structure, navigation patterns, and workspace organization.
 
 ## Overview
 
@@ -13,7 +22,7 @@ The Future Self dashboard is the central workspace where authenticated users acc
 **Purpose**: Primary navigation for accessing all services/tools and account features.
 
 **Components**:
-- **Services/Tools Navigation**: List of all available AI tools
+- **Services/Tools Navigation**: List of all available AI Services (displayed as "tools" in UI)
   - The Time Capsule
   - The Cinematic Switch
   - Global Voice
@@ -180,6 +189,8 @@ The Future Self dashboard is the central workspace where authenticated users acc
 
 ---
 
-**Document Purpose**: Reference for dashboard layout and navigation architecture  
-**Last Updated**: Project documentation foundation creation  
-**Maintained By**: Development team
+**See also**:
+- [Master Documentation Index](00-docs-index.md)
+- [Glossary & Canonical Naming](00-glossary.md)
+- [Dashboard UX Flow](08-dashboard-ux-flow.md)
+- [Page Structure](02-page-structure.md)

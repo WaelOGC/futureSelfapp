@@ -1,17 +1,26 @@
-# Credits and Subscriptions: Future Self
+**Title**: Credits and Subscriptions  
+**Status**: Draft  
+**Version**: 1.0  
+**Owner**: FutureSelfApp Team  
+**Last Updated**: 2024-12-19  
+**Applies To**: Billing, Accounts, Credits
 
-This document defines the user account types, credits system, subscription logic, usage limits, multi-AI provider strategy, referral program, and user transparency for the Future Self platform.
+---
+
+# Credits and Subscriptions: FutureSelfApp
+
+This document defines the user account types, credits system, subscription logic, usage limits, multi-AI provider strategy, referral program, and user transparency for the FutureSelfApp platform.
 
 ## Account Types
 
 ### Guest (Unregistered User)
 
-**Definition**: A user who accesses Future Self without creating an account.
+**Definition**: A user who accesses FutureSelfApp without creating an account.
 
 **Capabilities**:
 - View landing page and marketing content
 - Browse public information (blog, about page, support documentation)
-- Cannot access any AI tools
+- Cannot access any AI Services
 - Cannot generate content
 - Cannot save work
 - Cannot purchase credits or subscribe
@@ -99,7 +108,7 @@ This document defines the user account types, credits system, subscription logic
 
 ### What is a Credit?
 
-**Definition**: A credit is a unit of consumption that represents the cost of using an AI tool to generate content.
+**Definition**: A credit is a unit of consumption that represents the cost of using an AI Service to generate content.
 
 **Purpose**:
 - Standardized measurement of tool usage
@@ -116,7 +125,7 @@ This document defines the user account types, credits system, subscription logic
 ### Credit Consumption
 
 **Per-Tool Consumption**:
-- Each AI tool consumes a specific number of credits per generation
+- Each AI Service consumes a specific number of credits per generation
 - Credit costs vary by tool based on complexity and processing requirements
 - Costs are displayed to users before generation
 - Credits are deducted immediately upon successful generation
@@ -165,7 +174,7 @@ This document defines the user account types, credits system, subscription logic
 **Definition**: Credits acquired through direct purchase via credit packages.
 
 **Purpose**:
-- Primary method of accessing AI tools
+- Primary method of accessing AI Services
 - Flexible pay-as-you-go model
 - No subscription commitment required
 
@@ -421,7 +430,7 @@ This document defines the user account types, credits system, subscription logic
 - Automated generation via API (if implemented) subject to rate limits
 
 **Prohibited Use**:
-- Generating content for resale as a service (competing with Future Self)
+- Generating content for resale as a service (competing with FutureSelfApp)
 - Automated bulk generation without proper authorization
 - Attempting to reverse-engineer AI models
 - Using platform to train competing AI systems
@@ -491,7 +500,7 @@ This document defines the user account types, credits system, subscription logic
 **Provider Names Hidden**:
 - Users never see which AI provider is used
 - No mention of Replicate, OpenAI, Runway, etc. in user interface
-- Branding is "Future Self AI" only
+- Branding is "Future Self AI" only (user-facing; system uses "FutureSelfApp")
 - Technical details are internal implementation
 
 **User Experience**:
@@ -504,7 +513,7 @@ This document defines the user account types, credits system, subscription logic
 - Simplifies user experience (no technical complexity)
 - Protects business relationships (provider confidentiality)
 - Allows provider changes without user confusion
-- Maintains Future Self brand consistency
+- Maintains FutureSelfApp brand consistency (system-level; user-facing uses "Future Self")
 
 ### Best Source Selection
 
@@ -818,6 +827,8 @@ This document defines the user account types, credits system, subscription logic
 
 ---
 
-**Document Purpose**: Reference for credits, subscriptions, and account access logic  
-**Last Updated**: Project documentation foundation creation  
-**Maintained By**: Development team
+**See also**:
+- [Master Documentation Index](00-docs-index.md)
+- [Glossary & Canonical Naming](00-glossary.md)
+- [Payments and Billing](11-payments-and-billing.md)
+- [User Account System](03-user-account-system.md)

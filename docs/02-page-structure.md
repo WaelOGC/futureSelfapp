@@ -1,12 +1,21 @@
-# Page Structure: Future Self
+**Title**: Page Structure  
+**Status**: Draft  
+**Version**: 1.0  
+**Owner**: FutureSelfApp Team  
+**Last Updated**: 2024-12-19  
+**Applies To**: UI, Routing
 
-This document outlines all planned pages for the Future Self web application. Each page serves a specific purpose in the user journey and platform architecture.
+---
+
+# Page Structure: FutureSelfApp
+
+This document outlines all planned pages for the FutureSelfApp web application. Each page serves a specific purpose in the user journey and platform architecture.
 
 ## Public Pages
 
 ### Landing Page
 **Route**: `/`  
-**Purpose**: Primary entry point for new and returning users. Introduces Future Self, explains value proposition, and guides users to sign up or log in.  
+**Purpose**: Primary entry point for new and returning users. Introduces FutureSelfApp, explains value proposition, and guides users to sign up or log in.  
 **Key Elements**:
 - Hero section with value proposition
 - Service overview
@@ -16,7 +25,7 @@ This document outlines all planned pages for the Future Self web application. Ea
 
 ### Blog
 **Route**: `/blog`  
-**Purpose**: Content marketing and SEO. Provides articles, tutorials, case studies, and updates about Future Self services.  
+**Purpose**: Content marketing and SEO. Provides articles, tutorials, case studies, and updates about FutureSelfApp AI Services.  
 **Key Elements**:
 - Article listings
 - Individual blog post pages
@@ -38,7 +47,7 @@ This document outlines all planned pages for the Future Self web application. Ea
 
 ### Dashboard
 **Route**: `/dashboard`  
-**Purpose**: Main workspace after login. Provides access to all AI tools, displays user's work history, and shows account status.  
+**Purpose**: Main workspace after login. Provides access to all AI Services, displays user's work history, and shows account status.  
 **Key Elements**:
 - Left sidebar navigation (services/tools)
 - Tool-specific workspace area
@@ -152,7 +161,7 @@ This document outlines all planned pages for the Future Self web application. Ea
 
 ### Privacy Policy
 **Route**: `/privacy`  
-**Purpose**: Legal document explaining how Future Self collects, uses, and protects user data.  
+**Purpose**: Legal document explaining how FutureSelfApp collects, uses, and protects user data.  
 **Key Elements**:
 - Data collection practices
 - Data usage and storage
@@ -181,7 +190,7 @@ This document outlines all planned pages for the Future Self web application. Ea
 
 ### About
 **Route**: `/about`  
-**Purpose**: Information about Future Self as a product (not OGC NewFinity).  
+**Purpose**: Information about FutureSelfApp as a product (not OGC NewFinity).  
 **Key Elements**:
 - Product mission and vision
 - Service overview
@@ -238,6 +247,8 @@ This document outlines all planned pages for the Future Self web application. Ea
 
 ---
 
-**Document Purpose**: Reference for all page planning and routing decisions  
-**Last Updated**: Project documentation foundation creation  
-**Maintained By**: Development team
+**See also**:
+- [Master Documentation Index](00-docs-index.md)
+- [Glossary & Canonical Naming](00-glossary.md)
+- [Dashboard Architecture](04-dashboard-architecture.md)
+- [Dashboard UX Flow](08-dashboard-ux-flow.md)

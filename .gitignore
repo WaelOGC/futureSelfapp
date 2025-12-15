@@ -27,6 +27,11 @@ wheels/
 .env
 .env.local
 
+# Node.js
+node_modules/
+.venv/
+__pycache__/
+
 # Flask
 instance/
 .webassets-cache
