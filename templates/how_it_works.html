@@ -12,7 +12,7 @@
         justify-content: flex-start;
         text-align: center;
         position: relative;
-        padding: 40px 0 30px;
+        padding: 15px 0;
         margin-bottom: 0;
     }
 
@@ -33,7 +33,7 @@
         font-weight: 700;
         line-height: 1.2;
         margin-bottom: 24px;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -46,60 +46,13 @@
         font-size: 20px;
         font-weight: 400;
         line-height: 1.6;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         max-width: 700px;
         margin: 0 auto 40px;
         position: relative;
         z-index: 1;
     }
 
-    .how-hero-cta-group {
-        display: flex;
-        gap: 24px;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        z-index: 1;
-        flex-wrap: wrap;
-    }
-
-    .how-btn-primary {
-        padding: 14px 32px;
-        font-size: 16px;
-        font-weight: 500;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: transform 200ms ease, opacity 200ms ease;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .how-btn-primary:hover {
-        opacity: 0.9;
-        transform: translateY(-2px);
-    }
-
-    .how-btn-secondary {
-        padding: 14px 32px;
-        font-size: 16px;
-        font-weight: 400;
-        background: transparent;
-        color: var(--text-primary);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 200ms ease, border-color 200ms ease;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .how-btn-secondary:hover {
-        background: var(--bg-surface);
-        border-color: var(--accent-primary);
-    }
 
     /* Step-by-Step Journey */
     .step-journey {
@@ -110,8 +63,8 @@
         font-size: 36px;
         font-weight: 700;
         text-align: center;
-        margin-bottom: 48px;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        margin-bottom: 24px;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -126,11 +79,11 @@
     .journey-step {
         display: grid;
         grid-template-columns: 80px 1fr;
-        gap: 32px;
-        margin-bottom: 48px;
+        gap: 18px;
+        margin-bottom: 24px;
         position: relative;
         padding: 32px;
-        background: var(--glass-bg);
+        background: var(--surface);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border);
@@ -150,22 +103,15 @@
         top: 100%;
         width: 2px;
         height: 48px;
-        background: linear-gradient(180deg, var(--accent-primary), transparent);
+        background: linear-gradient(180deg, var(--primary), transparent);
         opacity: 0.3;
-        animation: flowUp 3s ease-in-out infinite;
-    }
-
-    @keyframes flowUp {
-        0% { opacity: 0.3; }
-        50% { opacity: 0.6; }
-        100% { opacity: 0.3; }
     }
 
     .step-badge {
         width: 64px;
         height: 64px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         display: flex;
         align-items: center;
         justify-content: center;
@@ -196,13 +142,13 @@
         font-size: 24px;
         font-weight: 600;
         margin-bottom: 12px;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .step-content p {
         font-size: 16px;
         font-weight: 400;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         line-height: 1.6;
         margin-bottom: 16px;
     }
@@ -221,19 +167,19 @@
         align-items: center;
         gap: 8px;
         font-size: 14px;
-        color: var(--text-secondary);
+        color: var(--text-muted);
     }
 
     .step-meta-label {
         font-weight: 500;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .step-meta-icon {
         width: 16px;
         height: 16px;
         border-radius: 50%;
-        background: var(--accent-primary);
+        background: var(--primary);
         opacity: 0.6;
     }
 
@@ -246,13 +192,13 @@
     .outcomes-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 32px;
+        gap: 18px;
         max-width: 1000px;
         margin: 0 auto;
     }
 
     .outcome-card {
-        background: var(--glass-bg);
+        background: var(--surface);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border);
@@ -270,13 +216,13 @@
         font-size: 22px;
         font-weight: 600;
         margin-bottom: 12px;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .outcome-card p {
         font-size: 16px;
         font-weight: 400;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         line-height: 1.6;
     }
 
@@ -288,13 +234,13 @@
     .safety-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
+        gap: 18px;
         max-width: 1000px;
-        margin: 0 auto 32px;
+        margin: 0 auto 24px;
     }
 
     .safety-block {
-        background: var(--glass-bg);
+        background: var(--surface);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border);
@@ -307,13 +253,13 @@
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 8px;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .safety-block p {
         font-size: 14px;
         font-weight: 400;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         line-height: 1.5;
     }
 
@@ -327,15 +273,15 @@
         padding: 12px 24px;
         font-size: 14px;
         font-weight: 500;
-        color: var(--accent-primary);
-        border: 1px solid var(--accent-primary);
+        color: var(--primary);
+        border: 1px solid var(--primary);
         border-radius: 8px;
         text-decoration: none;
         transition: background-color 200ms ease, color 200ms ease;
     }
 
     .safety-privacy-link a:hover {
-        background: var(--accent-primary);
+        background: var(--primary);
         color: white;
     }
 
@@ -352,7 +298,7 @@
 
     .faq-item {
         margin-bottom: 24px;
-        background: var(--glass-bg);
+        background: var(--surface);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border);
@@ -362,26 +308,26 @@
     }
 
     .faq-item:hover {
-        border-color: var(--accent-primary);
+        border-color: var(--primary);
     }
 
     .faq-question {
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 12px;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .faq-answer {
         font-size: 16px;
         font-weight: 400;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         line-height: 1.6;
     }
 
     /* Final CTA Band */
     .final-cta {
-        padding: 40px 0;
+        padding: 15px 0;
         text-align: center;
         position: relative;
         background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
@@ -404,21 +350,16 @@
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 16px;
-        color: var(--text-primary);
+        color: var(--text);
         position: relative;
         z-index: 1;
     }
 
-    .final-cta .how-btn-primary {
-        margin-bottom: 16px;
-        position: relative;
-        z-index: 1;
-    }
 
     .final-cta .cta-link {
         display: inline-block;
         font-size: 16px;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         text-decoration: none;
         transition: color 200ms ease;
         position: relative;
@@ -426,7 +367,7 @@
     }
 
     .final-cta .cta-link:hover {
-        color: var(--accent-primary);
+        color: var(--primary);
     }
 
     /* Responsive */
@@ -495,9 +436,9 @@
         <div class="container">
             <h1 class="page-title reveal reveal-up">How It Works</h1>
             <p class="section-subtitle reveal reveal-up">A simple, powerful process to connect with your future self and turn your vision into daily action. No complexity, just clarity.</p>
-            <div class="how-hero-cta-group reveal reveal-up">
-                <a href="/get-started" class="how-btn-primary">Start Now</a>
-                <a href="/disclaimer" class="how-btn-secondary">Read the Disclaimer</a>
+            <div class="btn-group center reveal reveal-up">
+                <a href="/get-started" class="btn btn-primary">Start Now</a>
+                <a href="/disclaimer" class="btn btn-secondary">Read the Disclaimer</a>
             </div>
         </div>
     </section>
@@ -510,7 +451,12 @@
                 <div class="journey-step reveal reveal-up">
                     <div class="step-badge">01</div>
                     <div class="step-content">
-                        <h3>Upload your photo</h3>
+                        <div class="card-title-row">
+                            <div class="icon">
+                                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                            </div>
+                            <h3>Upload your photo</h3>
+                        </div>
                         <p>Share a recent photo that represents where you are today. This becomes the starting point of your transformation journey.</p>
                         <div class="step-meta">
                             <div class="step-meta-item">
@@ -528,7 +474,12 @@
                 <div class="journey-step reveal reveal-up">
                     <div class="step-badge">02</div>
                     <div class="step-content">
-                        <h3>Describe your dream life</h3>
+                        <div class="card-title-row">
+                            <div class="icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <h3>Describe your dream life</h3>
+                        </div>
                         <p>Tell us about the future you want to build. Be specific about your aspirations, goals, and the person you're becoming.</p>
                         <div class="step-meta">
                             <div class="step-meta-item">
@@ -546,7 +497,12 @@
                 <div class="journey-step reveal reveal-up">
                     <div class="step-badge">03</div>
                     <div class="step-content">
-                        <h3>Generate your Future Self portrait</h3>
+                        <div class="card-title-row">
+                            <div class="icon">
+                                <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82zM7 7h.01"/></svg>
+                            </div>
+                            <h3>Generate your Future Self portrait</h3>
+                        </div>
                         <p>See yourself as you'll be when you've achieved your goals. This visual representation helps you connect with your future identity.</p>
                         <div class="step-meta">
                             <div class="step-meta-item">
@@ -564,7 +520,12 @@
                 <div class="journey-step reveal reveal-up">
                     <div class="step-badge">04</div>
                     <div class="step-content">
-                        <h3>Receive your wisdom letter</h3>
+                        <div class="card-title-row">
+                            <div class="icon">
+                                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                            </div>
+                            <h3>Receive your wisdom letter</h3>
+                        </div>
                         <p>Get a personalized message from your future self—insights, encouragement, and perspective from the person you're becoming.</p>
                         <div class="step-meta">
                             <div class="step-meta-item">
@@ -582,7 +543,12 @@
                 <div class="journey-step reveal reveal-up">
                     <div class="step-badge">05</div>
                     <div class="step-content">
-                        <h3>Save your next actions</h3>
+                        <div class="card-title-row">
+                            <div class="icon">
+                                <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
+                            </div>
+                            <h3>Save your next actions</h3>
+                        </div>
                         <p>Turn your vision into concrete daily steps. Save your action plan and start building the future you've imagined.</p>
                         <div class="step-meta">
                             <div class="step-meta-item">
@@ -686,9 +652,9 @@
     <section class="final-cta">
         <div class="container">
             <h2 class="section-title reveal reveal-up">Ready to meet who you're becoming?</h2>
-            <a href="/get-started" class="btn btn-primary reveal reveal-up">Get Started</a>
-            <div class="reveal reveal-up">
-                <a href="/contact" class="cta-link">Contact Support</a>
+            <div class="btn-group center reveal reveal-up">
+                <a href="/get-started" class="btn btn-primary">Get Started</a>
+                <a href="/contact" class="btn btn-ghost">Contact Support</a>
             </div>
         </div>
     </section>

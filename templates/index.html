@@ -15,42 +15,14 @@
     /* Hero Section */
     .hero {
         position: relative;
-        padding: 40px 0 30px;
+        padding: 15px 0;
         text-align: center;
         overflow: hidden;
-    }
-
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 800px;
-        height: 800px;
-        background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-        pointer-events: none;
-        animation: pulseGlow 4s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-        0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-        50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.05); }
     }
 
     .hero-content {
         position: relative;
         z-index: 1;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: heroFadeIn 0.8s ease-out forwards;
-    }
-
-    @keyframes heroFadeIn {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
     }
 
     .hero h1 {
@@ -58,7 +30,7 @@
         font-weight: 700;
         line-height: 1.2;
         margin-bottom: 16px;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -71,82 +43,18 @@
         font-size: 18px;
         font-weight: 400;
         line-height: 1.6;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         max-width: 700px;
         margin: 0 auto 24px;
     }
 
     .hero-supporting {
         font-size: 16px;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         margin-bottom: 32px;
         opacity: 0.8;
     }
 
-    .hero-cta-group {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-bottom: 0;
-    }
-
-    .btn-primary {
-        padding: 14px 32px;
-        font-size: 16px;
-        font-weight: 500;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: transform 300ms ease, box-shadow 300ms ease, opacity 300ms ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn-primary::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: left 500ms ease;
-    }
-
-    .btn-primary:hover {
-        transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
-    }
-
-    .btn-primary:hover::before {
-        left: 100%;
-    }
-
-    .btn-primary:active {
-        transform: translateY(0) scale(1);
-    }
-
-    .btn-secondary {
-        padding: 14px 32px;
-        font-size: 16px;
-        font-weight: 400;
-        background: transparent;
-        color: var(--text-primary);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 300ms ease;
-    }
-
-    .btn-secondary:hover {
-        background: var(--bg-surface);
-        border-color: var(--accent-primary);
-        transform: translateY(-1px);
-    }
 
     /* Services Section */
     .services {
@@ -157,26 +65,13 @@
     .services-header {
         text-align: center;
         margin-bottom: 32px;
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    .services-header.visible {
-        animation: fadeInUp 0.6s ease-out forwards;
-    }
-
-    @keyframes fadeInUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
     }
 
     .services-title {
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 8px;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -184,7 +79,7 @@
 
     .services-subtitle {
         font-size: 16px;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         max-width: 600px;
         margin: 0 auto;
     }
@@ -197,52 +92,15 @@
     }
 
     .service-card {
-        background: var(--glass-bg);
+        background: var(--surface);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border);
         border-radius: 12px;
         padding: 24px;
-        transition: all 300ms ease;
-        opacity: 0;
-        transform: translateY(30px);
         cursor: pointer;
         position: relative;
         overflow: hidden;
-    }
-
-    .service-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 300ms ease;
-    }
-
-    .service-card.visible {
-        animation: cardFadeIn 0.6s ease-out forwards;
-    }
-
-    @keyframes cardFadeIn {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .service-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-        border-color: var(--accent-primary);
-    }
-
-    .service-card:hover::before {
-        transform: scaleX(1);
     }
 
     .service-icon {
@@ -255,11 +113,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: transform 300ms ease;
-    }
-
-    .service-card:hover .service-icon {
-        transform: scale(1.1) rotate(5deg);
     }
 
     .service-icon::after {
@@ -267,7 +120,7 @@
         position: absolute;
         width: 24px;
         height: 24px;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         border-radius: 4px;
         opacity: 0.6;
     }
@@ -276,41 +129,28 @@
         font-size: 20px;
         font-weight: 600;
         margin-bottom: 8px;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .service-card p {
         font-size: 15px;
         font-weight: 400;
         line-height: 1.6;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         margin-bottom: 12px;
     }
 
     .service-link {
         font-size: 14px;
-        color: var(--accent-primary);
+        color: var(--primary);
         text-decoration: none;
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        opacity: 0;
-        transform: translateX(-10px);
-        transition: all 300ms ease;
-    }
-
-    .service-card:hover .service-link {
-        opacity: 1;
-        transform: translateX(0);
     }
 
     .service-link::after {
         content: '→';
-        transition: transform 300ms ease;
-    }
-
-    .service-card:hover .service-link::after {
-        transform: translateX(4px);
     }
 
     /* Value Proposition */
@@ -323,16 +163,10 @@
         font-weight: 700;
         text-align: center;
         margin-bottom: 32px;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    .value-prop-title.visible {
-        animation: fadeInUp 0.6s ease-out forwards;
     }
 
     .value-prop-grid {
@@ -342,25 +176,12 @@
     }
 
     .value-card {
-        background: var(--glass-bg);
+        background: var(--surface);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border);
         border-radius: 12px;
         padding: 24px;
-        transition: all 300ms ease;
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    .value-card.visible {
-        animation: fadeInUp 0.6s ease-out forwards;
-    }
-
-    .value-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-        border-color: var(--accent-primary);
     }
 
     .value-icon {
@@ -373,22 +194,19 @@
     .value-icon-hexagon {
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
         opacity: 0.8;
-        filter: blur(2px);
-        animation: pulse 3s ease-in-out infinite;
     }
 
     .value-icon-grid {
         width: 100%;
         height: 100%;
         background-image: 
-            linear-gradient(var(--accent-primary) 2px, transparent 2px),
-            linear-gradient(90deg, var(--accent-primary) 2px, transparent 2px);
+            linear-gradient(var(--primary) 2px, transparent 2px),
+            linear-gradient(90deg, var(--primary) 2px, transparent 2px);
         background-size: 12px 12px;
         opacity: 0.6;
-        animation: gridFlow 4s linear infinite;
     }
 
     .value-icon-wave {
@@ -396,42 +214,26 @@
         height: 100%;
         background: linear-gradient(90deg, 
             transparent 0%, 
-            var(--accent-secondary) 25%, 
-            var(--accent-primary) 50%, 
-            var(--accent-secondary) 75%, 
+            var(--accent) 25%, 
+            var(--primary) 50%, 
+            var(--accent) 75%, 
             transparent 100%);
         opacity: 0.6;
         border-radius: 50%;
-        animation: waveDrift 8s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-        0%, 100% { opacity: 0.6; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.05); }
-    }
-
-    @keyframes gridFlow {
-        0% { background-position: 0 0; }
-        100% { background-position: 12px 12px; }
-    }
-
-    @keyframes waveDrift {
-        0%, 100% { transform: translateX(0) scale(1); }
-        50% { transform: translateX(10px) scale(1.1); }
     }
 
     .value-card h3 {
         font-size: 20px;
         font-weight: 600;
         margin-bottom: 8px;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .value-card p {
         font-size: 16px;
         font-weight: 400;
         line-height: 1.6;
-        color: var(--text-secondary);
+        color: var(--text-muted);
     }
 
     /* How It Works */
@@ -443,14 +245,8 @@
         font-size: 36px;
         font-weight: 700;
         text-align: center;
-        margin-bottom: 40px;
-        color: var(--text-primary);
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    .how-it-works-title.visible {
-        animation: fadeInUp 0.6s ease-out forwards;
+        margin-bottom: 15px;
+        color: var(--text);
     }
 
     .steps {
@@ -464,19 +260,6 @@
         align-items: flex-start;
         margin-bottom: 32px;
         position: relative;
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-
-    .step.visible {
-        animation: slideInLeft 0.6s ease-out forwards;
-    }
-
-    @keyframes slideInLeft {
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
     }
 
     .step:not(:last-child)::after {
@@ -486,21 +269,14 @@
         top: 64px;
         width: 2px;
         height: calc(100% + 32px);
-        background: linear-gradient(180deg, var(--accent-primary), transparent);
+        background: linear-gradient(180deg, var(--primary), transparent);
         opacity: 0.3;
-        animation: flowUp 3s ease-in-out infinite;
-    }
-
-    @keyframes flowUp {
-        0% { opacity: 0.2; }
-        50% { opacity: 0.5; }
-        100% { opacity: 0.2; }
     }
 
     .step-number {
         font-size: 48px;
         font-weight: 700;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -513,13 +289,13 @@
         font-size: 24px;
         font-weight: 600;
         margin-bottom: 8px;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .step-content p {
         font-size: 16px;
         font-weight: 400;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         line-height: 1.6;
     }
 
@@ -536,23 +312,13 @@
     }
 
     .trust-column {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    .trust-column.visible {
-        animation: fadeInUp 0.6s ease-out forwards;
-    }
-
-    .trust-column:nth-child(2) {
-        animation-delay: 0.2s;
     }
 
     .trust-column h2 {
         font-size: 28px;
         font-weight: 600;
         margin-bottom: 24px;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .trust-list {
@@ -563,7 +329,7 @@
         font-size: 16px;
         font-weight: 400;
         line-height: 1.8;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         margin-bottom: 12px;
         padding-left: 20px;
         position: relative;
@@ -573,57 +339,30 @@
         content: '—';
         position: absolute;
         left: 0;
-        color: var(--accent-primary);
+        color: var(--primary);
     }
 
     /* Call to Action */
     .cta-section {
-        padding: 40px 0;
+        padding: 15px 0;
         text-align: center;
         position: relative;
-        background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-    }
-
-    .cta-section::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 600px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
-        pointer-events: none;
-        opacity: 0.5;
-        animation: pulseGlow 4s ease-in-out infinite;
     }
 
     .cta-section h2 {
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 16px;
-        color: var(--text-primary);
+        color: var(--text);
         position: relative;
         z-index: 1;
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    .cta-section.visible h2 {
-        animation: fadeInUp 0.6s ease-out forwards;
     }
 
     .cta-section p {
         font-size: 18px;
         font-weight: 400;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         margin-bottom: 32px;
-        opacity: 0.7;
-        position: relative;
-        z-index: 1;
-    }
-
-    .cta-section .btn-primary {
         position: relative;
         z-index: 1;
     }
@@ -631,7 +370,7 @@
     .cta-section .btn-link {
         display: inline-block;
         font-size: 16px;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         text-decoration: none;
         transition: color 300ms ease;
         position: relative;
@@ -640,7 +379,7 @@
     }
 
     .cta-section .btn-link:hover {
-        color: var(--accent-primary);
+        color: var(--primary);
     }
 
     /* Responsive */
@@ -697,15 +436,6 @@
             font-size: 20px;
         }
 
-        .hero-cta-group {
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .btn-primary,
-        .btn-secondary {
-            width: 100%;
-        }
     }
 </style>
 {% endblock %}
@@ -718,9 +448,9 @@
                 <h1 class="page-title reveal reveal-up">Build your future, one day at a time</h1>
                 <p class="section-subtitle reveal reveal-up">Future Self translates your long-term goals into daily actions. Stay consistent with calm, intelligent AI guidance.</p>
                 <p class="text-muted reveal reveal-up" style="text-align: center; max-width: 700px; margin: 0 auto 24px;">Five focused AI services. One platform. Built for clarity and execution.</p>
-                <div class="hero-cta-group reveal reveal-up">
-                    <button class="btn-primary" onclick="window.location.href='/get-started'">Start Your Journey</button>
-                    <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">Explore Services</button>
+                <div class="btn-group center reveal reveal-up">
+                    <a href="/get-started" class="btn btn-primary">Start Your Journey</a>
+                    <button class="btn btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">Explore Services</button>
                 </div>
             </div>
         </div>
@@ -735,40 +465,60 @@
             </div>
             <div class="card-grid" data-stagger="120">
                 <div class="card service-card reveal reveal-up" data-service="1">
-                    <div class="service-icon"></div>
-                    <h3>Future Self</h3>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                        </div>
+                        <h3>Future Self</h3>
+                    </div>
                     <p>Visualize your future self through AI-powered photo aging and receive personalized wisdom from your future perspective.</p>
                     <div style="margin-top: 16px;">
                         <a href="/get-started" class="btn btn-primary">Start</a>
                     </div>
                 </div>
                 <div class="card service-card reveal reveal-up" data-service="2">
-                    <div class="service-icon"></div>
-                    <h3>Goal Blueprint</h3>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        </div>
+                        <h3>Goal Blueprint</h3>
+                    </div>
                     <p>Transform your aspirations into structured, actionable plans with AI-powered goal breakdown and milestone tracking.</p>
                     <div style="margin-top: 16px;">
                         <a href="/services" class="btn btn-primary">Learn more</a>
                     </div>
                 </div>
                 <div class="card service-card reveal reveal-up" data-service="3">
-                    <div class="service-icon"></div>
-                    <h3>Habit Builder</h3>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <h3>Habit Builder</h3>
+                    </div>
                     <p>Build lasting habits with intelligent daily routines, progress tracking, and personalized habit formation strategies.</p>
                     <div style="margin-top: 16px;">
                         <a href="/services" class="btn btn-primary">Learn more</a>
                     </div>
                 </div>
                 <div class="card service-card reveal reveal-up" data-service="4">
-                    <div class="service-icon"></div>
-                    <h3>Accountability System</h3>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                        </div>
+                        <h3>Accountability System</h3>
+                    </div>
                     <p>Stay on track with AI-powered check-ins, progress monitoring, and gentle reminders that respect your pace.</p>
                     <div style="margin-top: 16px;">
                         <a href="/services" class="btn btn-primary">Learn more</a>
                     </div>
                 </div>
                 <div class="card service-card reveal reveal-up" data-service="5">
-                    <div class="service-icon"></div>
-                    <h3>Decision Clarity Assistant</h3>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2-7h-3V1h-2v3H8V1H6v3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H3V9h18v11z"/></svg>
+                        </div>
+                        <h3>Decision Clarity Assistant</h3>
+                    </div>
                     <p>Make confident decisions with structured analysis, pros and cons evaluation, and AI-guided clarity frameworks.</p>
                     <div style="margin-top: 16px;">
                         <a href="/services" class="btn btn-primary">Learn more</a>
@@ -784,24 +534,30 @@
             <h2 class="section-title reveal reveal-up">Clarity. Structure. Consistency.</h2>
             <div class="card-grid" data-stagger="120">
                 <div class="card value-card reveal reveal-up">
-                    <div class="value-icon">
-                        <div class="value-icon-hexagon"></div>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <h3>Define Your Vision</h3>
                     </div>
-                    <h3>Define Your Vision</h3>
                     <p>Set clear, meaningful long-term goals. Break through ambiguity with structured thinking.</p>
                 </div>
                 <div class="card value-card reveal reveal-up">
-                    <div class="value-icon">
-                        <div class="value-icon-grid"></div>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <h3>Daily Actions, Not Dreams</h3>
                     </div>
-                    <h3>Daily Actions, Not Dreams</h3>
                     <p>Every goal becomes a concrete plan. AI translates your vision into achievable daily steps.</p>
                 </div>
                 <div class="card value-card reveal reveal-up">
-                    <div class="value-icon">
-                        <div class="value-icon-wave"></div>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <h3>Calm Guidance, Not Pressure</h3>
                     </div>
-                    <h3>Calm Guidance, Not Pressure</h3>
                     <p>Stay on track with intelligent reminders. No motivational noise—just clear, supportive structure.</p>
                 </div>
             </div>
@@ -874,11 +630,11 @@
     <!-- Call to Action -->
     <section class="cta-section section">
         <div class="container">
-            <div class="card reveal reveal-fade" style="text-align: center; padding: 40px 24px;">
+            <div class="card reveal reveal-fade" style="text-align: center; padding: 24px;">
                 <h2 class="section-title" style="margin-bottom: 16px;">Ready to build your future?</h2>
                 <p class="text-muted" style="margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">Start your journey today. No credit card required.</p>
-                <button class="btn btn-primary" onclick="window.location.href='/get-started'">Get Started</button>
-                <div style="margin-top: 16px;">
+                <div class="btn-group center">
+                    <a href="/get-started" class="btn btn-primary">Get Started</a>
                     <a href="/how-it-works" class="btn btn-ghost">Learn more</a>
                 </div>
             </div>

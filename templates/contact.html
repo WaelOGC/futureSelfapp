@@ -12,7 +12,7 @@
         justify-content: flex-start;
         text-align: center;
         position: relative;
-        padding: 40px 0 30px;
+        padding: 15px 0;
         margin-bottom: 0;
     }
 
@@ -33,7 +33,7 @@
         font-weight: 700;
         line-height: 1.2;
         margin-bottom: 24px;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -46,7 +46,7 @@
         font-size: 20px;
         font-weight: 400;
         line-height: 1.6;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         max-width: 700px;
         margin: 0 auto 24px;
         position: relative;
@@ -60,7 +60,7 @@
 
     .contact-hero-link a {
         font-size: 16px;
-        color: var(--accent-primary);
+        color: var(--primary);
         text-decoration: none;
         transition: opacity 200ms ease;
     }
@@ -79,8 +79,8 @@
         font-size: 36px;
         font-weight: 700;
         text-align: center;
-        margin-bottom: 48px;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        margin-bottom: 24px;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -89,13 +89,13 @@
     .options-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
+        gap: 18px;
         max-width: 1000px;
         margin: 0 auto;
     }
 
     .option-card {
-        background: var(--glass-bg);
+        background: var(--surface);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border);
@@ -116,7 +116,7 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         color: white;
         border-radius: 4px;
         margin-bottom: 16px;
@@ -126,13 +126,13 @@
         font-size: 22px;
         font-weight: 600;
         margin-bottom: 12px;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .option-card p {
         font-size: 16px;
         font-weight: 400;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         line-height: 1.6;
     }
 
@@ -143,18 +143,13 @@
 
     .contact-form-wrapper {
         padding: 24px;
-        background: var(--glass-bg);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid var(--border);
-        border-radius: 12px;
     }
 
     .form-title {
         font-size: 28px;
         font-weight: 600;
         margin-bottom: 32px;
-        color: var(--text-primary);
+        color: var(--text);
         text-align: center;
     }
 
@@ -162,58 +157,11 @@
         margin-bottom: 24px;
     }
 
-    .form-group label {
-        display: block;
-        font-size: 16px;
-        font-weight: 500;
-        margin-bottom: 8px;
-        color: var(--text-primary);
-    }
-
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group select,
-    .form-group textarea {
-        width: 100%;
-        padding: 12px 16px;
-        font-size: 16px;
-        font-family: inherit;
-        background: var(--bg-surface);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        color: var(--text-primary);
-        transition: border-color 200ms ease, box-shadow 200ms ease;
-    }
-
-    .form-group input[type="text"]:focus,
-    .form-group input[type="email"]:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-        outline: none;
-        border-color: var(--accent-primary);
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-    }
-
-    .form-group select {
-        cursor: pointer;
-        appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2360A5FA' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 16px center;
-        padding-right: 40px;
-    }
-
-    .form-group textarea {
-        min-height: 140px;
-        resize: vertical;
-        font-family: inherit;
-    }
-
     .form-error {
         display: none;
         margin-top: 8px;
         font-size: 14px;
-        color: #ef4444;
+        color: var(--error);
     }
 
     .form-error.show {
@@ -225,7 +173,7 @@
         padding: 16px;
         font-size: 16px;
         font-weight: 500;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         color: white;
         border: none;
         border-radius: 8px;
@@ -248,7 +196,7 @@
     .form-success {
         display: none;
         text-align: center;
-        padding: 40px 20px;
+        padding: 24px 20px;
     }
 
     .form-success.show {
@@ -259,7 +207,7 @@
         width: 64px;
         height: 64px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         display: flex;
         align-items: center;
         justify-content: center;
@@ -271,12 +219,12 @@
         font-size: 24px;
         font-weight: 600;
         margin-bottom: 12px;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .form-success p {
         font-size: 16px;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         line-height: 1.6;
     }
 
@@ -287,7 +235,7 @@
 
     .trust-note-content {
         padding: 24px;
-        background: var(--glass-bg);
+        background: var(--surface);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border);
@@ -298,13 +246,13 @@
     .trust-note p {
         font-size: 16px;
         font-weight: 400;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         line-height: 1.7;
         margin-bottom: 16px;
     }
 
     .trust-note a {
-        color: var(--accent-primary);
+        color: var(--primary);
         text-decoration: none;
         transition: opacity 200ms ease;
         margin: 0 4px;
@@ -340,7 +288,7 @@
     .secondary-cta p {
         font-size: 18px;
         font-weight: 400;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         margin-bottom: 24px;
         position: relative;
         z-index: 1;
@@ -350,7 +298,7 @@
         padding: 14px 32px;
         font-size: 16px;
         font-weight: 500;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         color: white;
         border: none;
         border-radius: 8px;
@@ -407,13 +355,6 @@
         .trust-note-content {
             padding: 20px 16px;
         }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group select,
-        .form-group textarea {
-            font-size: 15px;
-        }
     }
 </style>
 {% endblock %}
@@ -437,17 +378,32 @@
             <div class="card-grid" data-stagger="120">
                 <div class="card option-card reveal reveal-up">
                     <span class="option-card-label">Product & experience</span>
-                    <h3>General Questions</h3>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                        </div>
+                        <h3>General Questions</h3>
+                    </div>
                     <p>Questions about how Future Self works, features, or your experience using the platform. We're here to help you get the most out of your journey.</p>
                 </div>
                 <div class="card option-card reveal reveal-up">
                     <span class="option-card-label">Data, privacy, consent</span>
-                    <h3>Privacy & Data</h3>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        </div>
+                        <h3>Privacy & Data</h3>
+                    </div>
                     <p>Concerns about your data, privacy settings, or how we handle your information. Your privacy matters, and we take it seriously.</p>
                 </div>
                 <div class="card option-card reveal reveal-up">
                     <span class="option-card-label">Collaborations & media</span>
-                    <h3>Partnerships</h3>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+                        </div>
+                        <h3>Partnerships</h3>
+                    </div>
                     <p>Interested in collaborating, partnerships, or media inquiries? We'd love to hear from you and explore opportunities together.</p>
                 </div>
             </div>
@@ -458,24 +414,29 @@
     <section class="contact-form-section">
         <div class="container">
             <div class="card contact-form-wrapper reveal reveal-up">
-                <h2 class="form-title">Send Us a Message</h2>
+                <div class="card-title-row" style="justify-content: center; margin-bottom: 32px;">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                    </div>
+                    <h2 class="form-title" style="margin-bottom: 0;">Send Us a Message</h2>
+                </div>
                 
                 <form id="contact-form">
                     <div class="form-group">
-                        <label for="name">Full Name <span style="color: var(--text-secondary); font-weight: 400;">(required)</span></label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="name">Full Name <span style="color: var(--text-muted); font-weight: 400;">(required)</span></label>
+                        <input type="text" id="name" name="name" class="input" required>
                         <div class="form-error" id="name-error">Please enter your name.</div>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email <span style="color: var(--text-secondary); font-weight: 400;">(required)</span></label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email <span style="color: var(--text-muted); font-weight: 400;">(required)</span></label>
+                        <input type="email" id="email" name="email" class="input" required>
                         <div class="form-error" id="email-error">Please enter a valid email address.</div>
                     </div>
 
                     <div class="form-group">
                         <label for="subject">Subject</label>
-                        <select id="subject" name="subject" required>
+                        <select id="subject" name="subject" class="select" required>
                             <option value="">Select a subject...</option>
                             <option value="general">General question</option>
                             <option value="privacy">Privacy concern</option>
@@ -486,8 +447,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Message <span style="color: var(--text-secondary); font-weight: 400;">(required)</span></label>
-                        <textarea id="message" name="message" placeholder="Tell us how we can help..." required></textarea>
+                        <label for="message">Message <span style="color: var(--text-muted); font-weight: 400;">(required)</span></label>
+                        <textarea id="message" name="message" class="textarea" placeholder="Tell us how we can help..." required></textarea>
                         <div class="form-error" id="message-error">Please enter your message.</div>
                     </div>
 

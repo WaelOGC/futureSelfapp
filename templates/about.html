@@ -12,7 +12,7 @@
         justify-content: flex-start;
         text-align: center;
         position: relative;
-        padding: 40px 0 30px;
+        padding: 15px 0;
         margin-bottom: 0;
     }
 
@@ -33,7 +33,7 @@
         font-weight: 700;
         line-height: 1.2;
         margin-bottom: 24px;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -46,60 +46,13 @@
         font-size: 20px;
         font-weight: 400;
         line-height: 1.6;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         max-width: 600px;
-        margin: 0 auto 40px;
+        margin: 0 auto 15px;
         position: relative;
         z-index: 1;
     }
 
-    .about-hero-cta-group {
-        display: flex;
-        gap: 24px;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        z-index: 1;
-        flex-wrap: wrap;
-    }
-
-    .about-btn-primary {
-        padding: 14px 32px;
-        font-size: 16px;
-        font-weight: 500;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: transform 200ms ease, opacity 200ms ease;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .about-btn-primary:hover {
-        opacity: 0.9;
-        transform: translateY(-2px);
-    }
-
-    .about-btn-secondary {
-        padding: 14px 32px;
-        font-size: 16px;
-        font-weight: 400;
-        background: transparent;
-        color: var(--text-primary);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 200ms ease, border-color 200ms ease;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .about-btn-secondary:hover {
-        background: var(--bg-surface);
-        border-color: var(--accent-primary);
-    }
 
     /* The Why Section */
     .the-why {
@@ -110,8 +63,8 @@
         font-size: 36px;
         font-weight: 700;
         text-align: center;
-        margin-bottom: 48px;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        margin-bottom: 24px;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -120,11 +73,11 @@
     .why-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
+        gap: 18px;
     }
 
     .why-card {
-        background: var(--glass-bg);
+        background: var(--surface);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border);
@@ -142,14 +95,14 @@
         font-size: 24px;
         font-weight: 600;
         margin-bottom: 12px;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .why-card p {
         font-size: 16px;
         font-weight: 400;
         line-height: 1.6;
-        color: var(--text-secondary);
+        color: var(--text-muted);
     }
 
     /* The Method Section */
@@ -167,7 +120,7 @@
     .method-step {
         display: flex;
         align-items: flex-start;
-        margin-bottom: 48px;
+        margin-bottom: 24px;
         position: relative;
     }
 
@@ -178,22 +131,15 @@
         top: 64px;
         width: 2px;
         height: calc(100% + 48px);
-        background: linear-gradient(180deg, var(--accent-primary), transparent);
+        background: linear-gradient(180deg, var(--primary), transparent);
         opacity: 0.3;
-        animation: flowUp 3s ease-in-out infinite;
-    }
-
-    @keyframes flowUp {
-        0% { opacity: 0.3; }
-        50% { opacity: 0.6; }
-        100% { opacity: 0.3; }
     }
 
     .method-step-number {
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         display: flex;
         align-items: center;
         justify-content: center;
@@ -214,13 +160,13 @@
         font-size: 24px;
         font-weight: 600;
         margin-bottom: 8px;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .method-step-content p {
         font-size: 16px;
         font-weight: 400;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         line-height: 1.6;
     }
 
@@ -240,7 +186,7 @@
         align-items: flex-start;
         margin-bottom: 32px;
         padding: 24px;
-        background: var(--glass-bg);
+        background: var(--surface);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border);
@@ -250,14 +196,14 @@
 
     .principle-item:hover {
         transform: translateX(4px);
-        border-color: var(--accent-primary);
+        border-color: var(--primary);
     }
 
     .principle-icon {
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(135deg, var(--primary), var(--accent));
         display: flex;
         align-items: center;
         justify-content: center;
@@ -287,13 +233,13 @@
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 4px;
-        color: var(--text-primary);
+        color: var(--text);
     }
 
     .principle-content p {
         font-size: 15px;
         font-weight: 400;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         line-height: 1.6;
     }
 
@@ -304,7 +250,7 @@
 
     .trust-boundaries-content {
         padding: 24px;
-        background: var(--glass-bg);
+        background: var(--surface);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid var(--border);
@@ -315,13 +261,13 @@
     .trust-boundaries p {
         font-size: 16px;
         font-weight: 400;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         line-height: 1.7;
         margin-bottom: 16px;
     }
 
     .trust-boundaries a {
-        color: var(--accent-primary);
+        color: var(--primary);
         text-decoration: none;
         font-weight: 500;
         transition: opacity 200ms ease;
@@ -334,7 +280,7 @@
 
     /* Final CTA Band */
     .final-cta {
-        padding: 40px 0;
+        padding: 15px 0;
         text-align: center;
         position: relative;
         background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
@@ -357,7 +303,7 @@
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 16px;
-        color: var(--text-primary);
+        color: var(--text);
         position: relative;
         z-index: 1;
     }
@@ -365,23 +311,18 @@
     .final-cta p {
         font-size: 18px;
         font-weight: 400;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         margin-bottom: 32px;
         opacity: 0.8;
         position: relative;
         z-index: 1;
     }
 
-    .final-cta .about-btn-primary {
-        margin-bottom: 16px;
-        position: relative;
-        z-index: 1;
-    }
 
     .final-cta .cta-link {
         display: inline-block;
         font-size: 16px;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         text-decoration: none;
         transition: color 200ms ease;
         position: relative;
@@ -389,7 +330,7 @@
     }
 
     .final-cta .cta-link:hover {
-        color: var(--accent-primary);
+        color: var(--primary);
     }
 
     /* Responsive */
@@ -454,9 +395,9 @@
         <div class="container">
             <h1 class="page-title reveal reveal-up">Meet Your Future Self</h1>
             <p class="section-subtitle reveal reveal-up">The person you become isn't built in a day. It's built through consistent choices, intentional actions, and the quiet commitment to show up—even when it's hard.</p>
-            <div class="about-hero-cta-group reveal reveal-up">
-                <a href="/get-started" class="about-btn-primary">Start Your Journey</a>
-                <a href="/how-it-works" class="about-btn-secondary">How It Works</a>
+            <div class="btn-group center reveal reveal-up">
+                <a href="/get-started" class="btn btn-primary">Start Your Journey</a>
+                <a href="/how-it-works" class="btn btn-secondary">How It Works</a>
             </div>
         </div>
     </section>
@@ -467,15 +408,30 @@
             <h2 class="section-title reveal reveal-up">The Why</h2>
             <div class="card-grid" data-stagger="100">
                 <div class="card why-card reveal reveal-up">
-                    <h3>Clarity</h3>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <h3>Clarity</h3>
+                    </div>
                     <p>Every decision becomes easier when you know who you're becoming. We help you see the path clearly, without the noise of endless options.</p>
                 </div>
                 <div class="card why-card reveal reveal-up">
-                    <h3>Consistency</h3>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <h3>Consistency</h3>
+                    </div>
                     <p>Big goals happen through small, daily actions. We turn your vision into a sustainable practice that fits your real life.</p>
                 </div>
                 <div class="card why-card reveal reveal-up">
-                    <h3>Identity</h3>
+                    <div class="card-title-row">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                        </div>
+                        <h3>Identity</h3>
+                    </div>
                     <p>You don't achieve goals—you become the person who naturally lives them. We help you build the identity that makes success inevitable.</p>
                 </div>
             </div>
@@ -525,35 +481,45 @@
             <h2 class="section-title reveal reveal-up">Our Principles</h2>
             <ul class="principles-list" data-stagger="100">
                 <li class="principle-item reveal reveal-up">
-                    <div class="principle-icon">🔒</div>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                    </div>
                     <div class="principle-content">
                         <h4>Privacy-first mindset</h4>
                         <p>Your goals, your data, your journey. We protect what matters most to you.</p>
                     </div>
                 </li>
                 <li class="card principle-item reveal reveal-up">
-                    <div class="principle-icon">✨</div>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
                     <div class="principle-content">
                         <h4>No shame, only progress</h4>
                         <p>Every day is a new opportunity. We celebrate where you are and support where you're going.</p>
                     </div>
                 </li>
                 <li class="card principle-item reveal reveal-up">
-                    <div class="principle-icon">📈</div>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+                    </div>
                     <div class="principle-content">
                         <h4>Small steps compound</h4>
                         <p>One percent better each day adds up to extraordinary change. We focus on sustainable progress.</p>
                     </div>
                 </li>
                 <li class="card principle-item reveal reveal-up">
-                    <div class="principle-icon">🎯</div>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/></svg>
+                    </div>
                     <div class="principle-content">
                         <h4>You stay in control</h4>
                         <p>This is your journey. We provide guidance, but you make the decisions that shape your future.</p>
                     </div>
                 </li>
                 <li class="card principle-item reveal reveal-up">
-                    <div class="principle-icon">🌱</div>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M17.5 4.5c-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S1.45 4.9 1.45 7c0 2.1 1.35 3.9 3.05 4.5-.7 1.4-1.35 2.8-1.35 4.5 0 2.21 1.79 4 4 4 1.8 0 3.55-.9 4.85-2.5 1.3 1.6 3.05 2.5 4.85 2.5 2.21 0 4-1.79 4-4 0-1.7-.65-3.1-1.35-4.5C19.05 10.9 20.4 9.1 20.4 7c0-2.1-1.45-2.5-2.9-2.5zm-11 13c-.83 0-1.5-.67-1.5-1.5 0-1.6 1.05-2.85 2.5-3.45.9.6 1.95 1 3 1 .25 0 .5-.03.75-.05-.85.85-1.75 1.65-1.75 2.7 0 .83.67 1.5 1.5 1.5zm6-1c0 1.1-.9 2-2 2s-2-.9-2-2c0-.9.65-1.65 1.5-2.35.85.7 1.5 1.45 1.5 2.35zm4.5 1c-.83 0-1.5-.67-1.5-1.5 0-.95.9-1.95 1.75-2.65 1.45.6 2.5 1.85 2.5 3.45 0 .83-.67 1.5-1.5 1.5z"/></svg>
+                    </div>
                     <div class="principle-content">
                         <h4>Designed for real life</h4>
                         <p>No perfect conditions required. We build tools that work in the messy, beautiful reality of everyday life.</p>
@@ -578,9 +544,9 @@
         <div class="container">
             <h2 class="section-title reveal reveal-up">Ready to meet your future self?</h2>
             <p class="text-muted reveal reveal-up" style="text-align: center; max-width: 600px; margin: 0 auto 24px;">Start building the life you want, one intentional step at a time.</p>
-            <a href="/get-started" class="btn btn-primary reveal reveal-up">Get Started</a>
-            <div class="reveal reveal-up">
-                <a href="/contact" class="cta-link">Contact us</a>
+            <div class="btn-group center reveal reveal-up">
+                <a href="/get-started" class="btn btn-primary">Get Started</a>
+                <a href="/contact" class="btn btn-ghost">Contact us</a>
             </div>
         </div>
     </section>
