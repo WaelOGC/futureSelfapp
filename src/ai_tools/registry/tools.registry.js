@@ -8,6 +8,10 @@ const imageAging = require('../toolkits/image_aging');
 const imageVariation = require('../toolkits/image_variation');
 const imageAnalysis = require('../toolkits/image_analysis');
 const audioTranscription = require('../toolkits/audio_transcription');
+const timeCapsule = require('../toolkits/time-capsule');
+const cinematicSwitch = require('../toolkits/cinematic-switch');
+const globalVoice = require('../toolkits/global-voice');
+const instantInfluencer = require('../toolkits/instant-influencer');
 
 // Registry of all tools
 const TOOLS = {
@@ -15,7 +19,11 @@ const TOOLS = {
   image_aging: imageAging,
   image_variation: imageVariation,
   image_analysis: imageAnalysis,
-  audio_transcription: audioTranscription
+  audio_transcription: audioTranscription,
+  'time-capsule': timeCapsule,
+  'cinematic-switch': cinematicSwitch,
+  'global-voice': globalVoice,
+  'instant-influencer': instantInfluencer
 };
 
 /**

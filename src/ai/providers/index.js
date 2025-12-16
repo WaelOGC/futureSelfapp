@@ -9,6 +9,7 @@ const { PROVIDERS } = require('../contracts/ai.interface');
 const { createOpenAIClient } = require('./openai.client');
 const { createGeminiClient } = require('./gemini.client');
 const { createAnthropicClient } = require('./anthropic.client');
+const { createHeyGenClient } = require('./heygen.client');
 
 // Register OpenAI provider on startup
 try {
@@ -32,6 +33,14 @@ try {
 try {
   const anthropicClient = createAnthropicClient();
   registerProvider(PROVIDERS.ANTHROPIC, anthropicClient);
+} catch (err) {
+  // Silent failure - errors will be surfaced when provider is actually used
+}
+
+// Register HeyGen provider
+try {
+  const heygenClient = createHeyGenClient();
+  registerProvider('HEYGEN', heygenClient);
 } catch (err) {
   // Silent failure - errors will be surfaced when provider is actually used
 }

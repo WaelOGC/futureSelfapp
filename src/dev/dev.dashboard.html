@@ -81,9 +81,11 @@
     <p style="color: #888;">Internal development tool for testing AI providers</p>
     
     <div id="envStatus" style="margin-bottom: 20px; padding: 15px; background: #2a2a2a; border: 1px solid #444;">
-        <h2 style="margin-top: 0; color: #fff; font-size: 16px;">Environment Status</h2>
+        <h2 style="margin-top: 0; color: #fff; font-size: 16px;">Provider Key Readiness</h2>
         <div id="openaiStatus" style="margin: 5px 0;">Checking...</div>
-        <div id="openaiDetails" style="margin: 5px 0; font-size: 12px; color: #888;"></div>
+        <div id="replicateStatus" style="margin: 5px 0;">Checking...</div>
+        <div id="heygenStatus" style="margin: 5px 0;">Checking...</div>
+        <div id="envDetails" style="margin: 5px 0; font-size: 12px; color: #888;"></div>
     </div>
     
     <div class="form-group">
@@ -92,6 +94,10 @@
             <option value="OPENAI">OPENAI</option>
             <option value="GEMINI">GEMINI</option>
             <option value="ANTHROPIC">ANTHROPIC</option>
+            <option value="REPLICATE">REPLICATE</option>
+            <option value="HEYGEN">HEYGEN</option>
+            <option value="ELEVENLABS">ELEVENLABS</option>
+            <option value="GLOBAL_VOICE">GLOBAL_VOICE</option>
         </select>
     </div>
     
@@ -103,12 +109,23 @@
             <option value="IMAGE_EDIT">IMAGE_EDIT</option>
             <option value="IMAGE_ANALYSIS">IMAGE_ANALYSIS</option>
             <option value="AUDIO_TRANSCRIPTION">AUDIO_TRANSCRIPTION</option>
+            <option value="TIME_CAPSULE_GENERATION">TIME_CAPSULE_GENERATION</option>
+            <option value="CINEMATIC_SWITCH_GENERATION">CINEMATIC_SWITCH_GENERATION</option>
+            <option value="VIDEO_TRANSLATION">VIDEO_TRANSLATION</option>
+            <option value="INSTANT_INFLUENCER_GENERATION">INSTANT_INFLUENCER_GENERATION</option>
         </select>
     </div>
     
     <div class="form-group">
         <label for="payload">Payload (JSON):</label>
         <textarea id="payload" placeholder='{"prompt": "Hello, world!", "system": "You are a helpful assistant."}'></textarea>
+        <small style="color: #888; display: block; margin-top: 5px;">
+            For TIME_CAPSULE_GENERATION: {"image": "data:image/jpeg;base64,...", "dream": "Your dream text here (10-2000 chars)"}<br>
+            For CINEMATIC_SWITCH_GENERATION: {"image": "data:image/jpeg;base64,...", "scene_description": "Transform this person into a medieval knight..."}<br>
+            For VIDEO_TRANSLATION: {"video": "data:video/mp4;base64,...", "target_language": "es", "voice_preservation": 0.8, "video_quality": "1080p"}<br>
+            <strong>Note:</strong> target_language must be a code like "es" (not "Spanish"). Provider should be HEYGEN.<br>
+            For INSTANT_INFLUENCER_GENERATION: {"image": "data:image/jpeg;base64,...", "style": "corporate", "variation_count": 3}
+        </small>
     </div>
     
     <button id="runBtn" onclick="runTest()">Run Test</button>
@@ -118,56 +135,81 @@
     <script>
         // Auto-check environment status on page load
         async function checkEnvStatus() {
-            const statusDiv = document.getElementById('openaiStatus');
+            const openaiStatusDiv = document.getElementById('openaiStatus');
+            const replicateStatusDiv = document.getElementById('replicateStatus');
+            const heygenStatusDiv = document.getElementById('heygenStatus');
+            const detailsDiv = document.getElementById('envDetails');
             const runBtn = document.getElementById('runBtn');
             
             try {
                 const response = await fetch('/dev/env');
                 const data = await response.json();
                 
-                // Check both Python and Node.js side for key availability
-                const pythonLoaded = data.python && data.python.OPENAI_API_KEY_loaded;
-                const nodejsLoaded = data.nodejs && data.nodejs.openaiKeyLoaded;
-                const keyLoaded = pythonLoaded || nodejsLoaded;
+                // Check OpenAI key
+                const pythonOpenaiLoaded = data.python && data.python.OPENAI_API_KEY_loaded;
+                const nodejsOpenaiLoaded = data.nodejs && data.nodejs.openaiKeyLoaded;
+                const openaiLoaded = pythonOpenaiLoaded || nodejsOpenaiLoaded;
                 
-                const detailsDiv = document.getElementById('openaiDetails');
-                
-                if (keyLoaded) {
+                if (openaiLoaded) {
                     const last4 = (data.python && data.python.openaiKeyLast4) || 
                                   (data.nodejs && data.nodejs.openaiKeyLast4) || 
                                   '****';
-                    const keyFormat = (data.python && data.python.keyFormat) || 
-                                     (data.nodejs && data.nodejs.keyFormat) || 
-                                     'unknown';
-                    const keyLength = (data.python && data.python.keyLength) || 
-                                     (data.nodejs && data.nodejs.keyLength) || 
-                                     0;
-                    const envPath = (data.python && data.python.envPathUsed) || 
-                                   (data.nodejs && data.nodejs.envPathUsed) || 
-                                   'unknown';
-                    
-                    statusDiv.innerHTML = `✅ OpenAI key loaded (last 4: ${last4})`;
-                    statusDiv.style.color = '#51cf66';
-                    
-                    // Show details
-                    let details = `Format: ${keyFormat} | Length: ${keyLength} chars | Path: ${envPath}`;
-                    detailsDiv.innerHTML = details;
-                    detailsDiv.style.color = '#888';
-                    
-                    runBtn.disabled = false;
+                    openaiStatusDiv.innerHTML = `✅ OpenAI key: loaded (last 4: ${last4})`;
+                    openaiStatusDiv.style.color = '#51cf66';
                 } else {
-                    statusDiv.innerHTML = '❌ OpenAI key missing';
-                    statusDiv.style.color = '#ff6b6b';
-                    const envPath = (data.python && data.python.envPathUsed) || 
-                                   (data.nodejs && data.nodejs.envPathUsed) || 
-                                   'unknown';
-                    detailsDiv.innerHTML = `Expected .env file at: ${envPath}`;
-                    detailsDiv.style.color = '#ff6b6b';
-                    runBtn.disabled = true;
+                    openaiStatusDiv.innerHTML = '❌ OpenAI key: missing';
+                    openaiStatusDiv.style.color = '#ff6b6b';
                 }
+                
+                // Check Replicate token
+                const pythonReplicateLoaded = data.python && data.python.REPLICATE_API_TOKEN_loaded;
+                const nodejsReplicateLoaded = data.nodejs && data.nodejs.replicateTokenLoaded;
+                const replicateLoaded = pythonReplicateLoaded || nodejsReplicateLoaded;
+                
+                if (replicateLoaded) {
+                    const last4 = (data.python && data.python.replicateTokenLast4) || 
+                                  (data.nodejs && data.nodejs.replicateTokenLast4) || 
+                                  '****';
+                    replicateStatusDiv.innerHTML = `✅ Replicate key: loaded (last 4: ${last4})`;
+                    replicateStatusDiv.style.color = '#51cf66';
+                } else {
+                    replicateStatusDiv.innerHTML = '❌ Replicate key: missing';
+                    replicateStatusDiv.style.color = '#ff6b6b';
+                }
+                
+                // Check HeyGen key
+                const pythonHeygenLoaded = data.python && data.python.HEYGEN_API_KEY_loaded;
+                const nodejsHeygenLoaded = data.nodejs && data.nodejs.heygenKeyLoaded;
+                const heygenLoaded = pythonHeygenLoaded || nodejsHeygenLoaded;
+                
+                if (heygenLoaded) {
+                    const last4 = (data.python && data.python.heygenKeyLast4) || 
+                                  (data.nodejs && data.nodejs.heygenKeyLast4) || 
+                                  '****';
+                    heygenStatusDiv.innerHTML = `✅ HeyGen key: loaded (last 4: ${last4})`;
+                    heygenStatusDiv.style.color = '#51cf66';
+                } else {
+                    heygenStatusDiv.innerHTML = '❌ HeyGen key: missing';
+                    heygenStatusDiv.style.color = '#ff6b6b';
+                }
+                
+                // Show environment path
+                const envPath = (data.python && data.python.envPathUsed) || 
+                               (data.nodejs && data.nodejs.envPathUsed) || 
+                               'unknown';
+                detailsDiv.innerHTML = `Environment file: ${envPath}`;
+                detailsDiv.style.color = '#888';
+                
+                // Enable button if at least OpenAI is loaded (for basic functionality)
+                runBtn.disabled = !openaiLoaded;
+                
             } catch (error) {
-                statusDiv.innerHTML = '❌ Error checking OpenAI key: ' + error.message;
-                statusDiv.style.color = '#ff6b6b';
+                openaiStatusDiv.innerHTML = '❌ Error checking keys: ' + error.message;
+                openaiStatusDiv.style.color = '#ff6b6b';
+                replicateStatusDiv.innerHTML = '❌ Error checking keys';
+                replicateStatusDiv.style.color = '#ff6b6b';
+                heygenStatusDiv.innerHTML = '❌ Error checking keys';
+                heygenStatusDiv.style.color = '#ff6b6b';
                 runBtn.disabled = true;
             }
         }
@@ -236,6 +278,18 @@
         document.getElementById('payload').addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.key === 'Enter') {
                 runTest();
+            }
+        });
+        
+        // Auto-set provider based on task selection
+        document.getElementById('task').addEventListener('change', function() {
+            const task = this.value;
+            const providerSelect = document.getElementById('provider');
+            
+            if (task === 'VIDEO_TRANSLATION') {
+                providerSelect.value = 'HEYGEN';
+            } else if (task === 'CINEMATIC_SWITCH_GENERATION' || task === 'INSTANT_INFLUENCER_GENERATION') {
+                providerSelect.value = 'REPLICATE';
             }
         });
     </script>

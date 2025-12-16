@@ -94,21 +94,23 @@ async function runAiTask({ provider, task, payload, identity = 'local-dev' }) {
   const startTime = Date.now();
   const inputChars = calculateInputChars(payload);
 
-  // Get provider
+  // Get provider (skip for TIME_CAPSULE_GENERATION, CINEMATIC_SWITCH_GENERATION, VIDEO_TRANSLATION, and INSTANT_INFLUENCER_GENERATION as they use tools registry)
   let providerClient;
-  try {
-    providerClient = getProvider(provider);
-  } catch (err) {
-    const endTime = Date.now();
-    endUsageSession(sessionId, {
-      inputChars,
-      outputChars: 0,
-      tokensIn: null,
-      tokensOut: null,
-      ms: endTime - startTime,
-      success: false
-    });
-    throw toAppError(err);
+  if (task !== AI_TASKS.TIME_CAPSULE_GENERATION && task !== AI_TASKS.CINEMATIC_SWITCH_GENERATION && task !== AI_TASKS.VIDEO_TRANSLATION && task !== AI_TASKS.INSTANT_INFLUENCER_GENERATION) {
+    try {
+      providerClient = getProvider(provider);
+    } catch (err) {
+      const endTime = Date.now();
+      endUsageSession(sessionId, {
+        inputChars,
+        outputChars: 0,
+        tokensIn: null,
+        tokensOut: null,
+        ms: endTime - startTime,
+        success: false
+      });
+      throw toAppError(err);
+    }
   }
 
   // Route to appropriate handler based on task
@@ -168,6 +170,74 @@ async function runAiTask({ provider, task, payload, identity = 'local-dev' }) {
           );
         }
         result = await providerClient.transcribeAudio(payload);
+        break;
+
+      case AI_TASKS.TIME_CAPSULE_GENERATION:
+        // Time Capsule is a service that uses tools registry, not a provider method
+        // Provider is used for wisdom letter generation (OpenAI), but we allow any valid provider
+        // If provider is TIME_CAPSULE, default to OPENAI for wisdom letter
+        const { runTool } = require('../../ai_tools/registry/tools.registry');
+        const wisdomLetterProvider = (provider === 'TIME_CAPSULE' || !provider) ? 'OPENAI' : provider;
+        const toolResult = await runTool({
+          toolId: 'time-capsule',
+          payload: payload,
+          provider: wisdomLetterProvider,
+          identity: identity
+        });
+        result = toolResult.data;
+        // Override provider in response to show TIME_CAPSULE
+        provider = 'TIME_CAPSULE';
+        break;
+
+      case AI_TASKS.CINEMATIC_SWITCH_GENERATION:
+        // Cinematic Switch is a service that uses tools registry, not a provider method
+        // Provider is used for image transformation (Replicate), but we allow any valid provider
+        // If provider is CINEMATIC_SWITCH, default to REPLICATE for image transformation
+        const { runTool: runCinematicTool } = require('../../ai_tools/registry/tools.registry');
+        const imageTransformProvider = (provider === 'CINEMATIC_SWITCH' || !provider) ? 'REPLICATE' : provider;
+        const cinematicToolResult = await runCinematicTool({
+          toolId: 'cinematic-switch',
+          payload: payload,
+          provider: imageTransformProvider,
+          identity: identity
+        });
+        result = cinematicToolResult.data;
+        // Override provider in response to show CINEMATIC_SWITCH
+        provider = 'CINEMATIC_SWITCH';
+        break;
+
+      case AI_TASKS.VIDEO_TRANSLATION:
+        // Global Voice is a service that uses tools registry, not a provider method
+        // Provider is used for voice translation (HeyGen/ElevenLabs), but we allow any valid provider
+        // If provider is GLOBAL_VOICE or HEYGEN, default to HEYGEN for voice translation
+        const { runTool: runGlobalVoiceTool } = require('../../ai_tools/registry/tools.registry');
+        const voiceTranslationProvider = (provider === 'GLOBAL_VOICE' || provider === 'HEYGEN' || !provider) ? 'HEYGEN' : provider;
+        const globalVoiceToolResult = await runGlobalVoiceTool({
+          toolId: 'global-voice',
+          payload: payload,
+          provider: voiceTranslationProvider,
+          identity: identity
+        });
+        result = globalVoiceToolResult.data;
+        // Override provider in response to show GLOBAL_VOICE
+        provider = 'GLOBAL_VOICE';
+        break;
+
+      case AI_TASKS.INSTANT_INFLUENCER_GENERATION:
+        // Instant Influencer is a service that uses tools registry, not a provider method
+        // Provider is used for headshot generation (Replicate), but we allow any valid provider
+        // If provider is INSTANT_INFLUENCER, default to REPLICATE for headshot generation
+        const { runTool: runInstantInfluencerTool } = require('../../ai_tools/registry/tools.registry');
+        const headshotProvider = (provider === 'INSTANT_INFLUENCER' || !provider) ? 'REPLICATE' : provider;
+        const instantInfluencerToolResult = await runInstantInfluencerTool({
+          toolId: 'instant-influencer',
+          payload: payload,
+          provider: headshotProvider,
+          identity: identity
+        });
+        result = instantInfluencerToolResult.data;
+        // Override provider in response to show INSTANT_INFLUENCER
+        provider = 'INSTANT_INFLUENCER';
         break;
 
       default:

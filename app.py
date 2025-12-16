@@ -147,6 +147,18 @@ def dev_env_check():
     is_project_key = openai_key.startswith("sk-proj-") if openai_key else False
     has_project_id = bool(os.getenv("OPENAI_PROJECT_ID"))
     
+    # Get Replicate token info
+    replicate_token = os.getenv("REPLICATE_API_TOKEN", "")
+    replicate_token_last4 = "MISSING"
+    if replicate_token and len(replicate_token) >= 4:
+        replicate_token_last4 = replicate_token[-4:]
+    
+    # Get HeyGen key info
+    heygen_key = os.getenv("HEYGEN_API_KEY", "")
+    heygen_key_last4 = "MISSING"
+    if heygen_key and len(heygen_key) >= 4:
+        heygen_key_last4 = heygen_key[-4:]
+    
     return jsonify({
         "python": {
             "OPENAI_API_KEY_loaded": bool(openai_key),
@@ -154,7 +166,10 @@ def dev_env_check():
             "keyFormat": "project-based (sk-proj-*)" if is_project_key else "standard (sk-*)" if openai_key else "none",
             "OPENAI_PROJECT_ID_loaded": has_project_id,
             "envPathUsed": env_path_used,
-            "REPLICATE_API_TOKEN_loaded": bool(os.getenv("REPLICATE_API_TOKEN")),
+            "REPLICATE_API_TOKEN_loaded": bool(replicate_token),
+            "replicateTokenLast4": replicate_token_last4,
+            "HEYGEN_API_KEY_loaded": bool(heygen_key),
+            "heygenKeyLast4": heygen_key_last4,
             "NODE_ENV": os.getenv("NODE_ENV", "development"),
             "keyLength": len(openai_key) if openai_key else 0
         },
